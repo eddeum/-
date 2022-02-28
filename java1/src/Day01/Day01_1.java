@@ -20,18 +20,19 @@ public class Day01_1 { // 클래스의 시작 c s
 	// 2. 실행코드 main함수
 		//1. main 입력후 
 	    //2. ctrl 누른상태에서 스페이스바 -> 엔터 
-	public static void main(String[] System.out.println(args) { // main start
-
-	}
+	public static void main(String[] args) { // main start
 		// public : 접근제한다
 			// static : 정적
 				// void : 반환타입[돌려주는 값] 없다
 					// main 함수 : 메인 스레드를 가지고 있는 함수[필수]
 					// 스레드 : 코드를 읽어주는 흐름
-	
+		
 		// * main함수 {} 안에 작성된 코드는 실행된다.
-);// syso -> ctrl+스페이스바 : 출력 자동완성
-		 //고급언어[사람이 이해하는 언어]
+		
+		// syso -> ctrl+스페이스바 : 출력자동완성
+		System.out.println("java 출력"); // 고급언어[사람이 이해하는 언어]
 		// 컴파일[ctrl+F11]
-			// 저장[ctrl+s]
+					// 저장[ctrl+s]
+	} // main end
+
 } // 클래스의 끝 c e

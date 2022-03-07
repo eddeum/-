@@ -39,7 +39,7 @@ public class Day05_4 { // cs
 						break;
 					} // for e
 				} // if e
-			}
+			} // if e
 			else if(선택==2) {
 				System.out.println("------- 로그인 페이지 -------");
 				System.out.println("ID : ");		String id = scanner.next();
@@ -99,20 +99,18 @@ public class Day05_4 { // cs
 						} // else e
 					} // while e
 				} // else e
-		
-			} // else if e
-					
-		} // while e
 				
 				if(logincheck == false) System.err.println("알림)회원정보가 없거나 다릅니다.");
-				
+		
 			} // else if e
+			
 			else {
 				System.err.println("알림)알수없는 번호입니다.");
 			} // else e
 			
+					
 		} // while e
-		
+
 		
 	} // me
 	

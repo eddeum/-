@@ -28,6 +28,7 @@ public class Day05_2 {
 			System.out.println("---------------------------");
 			System.out.println("1. 회원가입 2. 로그인 선택 : "); int ch = scanner.nextInt();
 			if(ch==1) {
+				
 				System.out.println("-------- 회원가입 페이지 --------");
 				System.out.print("MEMBER ID : ");	String id = scanner.next();
 				System.out.print("MEMBER PASSWORD : ");	String pw = scanner.next();
@@ -46,6 +47,7 @@ public class Day05_2 {
 						break;
 					} // if e
 				} // for e
+				
 				// 저장부분
 				if(idcheck) { // idcheck가 true인 경우에만 회원가입처리
 					for(int i = 0; i<memberlist.length; i++) {
@@ -59,7 +61,8 @@ public class Day05_2 {
 					
 					} // for e
 	
-				} // if e	
+				} // if e
+			
 				
 			} // if e
 			else if(ch==2) {

@@ -57,14 +57,34 @@ public class Day06_비회원제게시판문제_1 {
 				else if(ch2==2) {
 					System.out.println("게시물 비밀번호 : ");	String password = scanner.next();
 					
-					for(Board temp : boardlist) {
-						if(temp != null && temp.password.equals(password)) {
-							syso
-							boardlist[bno] = null;
-						} // if e
-					} // for e
+					if(boardlist[bno].password.equals(password)) {
+						System.out.println("알림)게시물 삭제 성공");
+						boardlist[bno] = null;
+						// 게시물 삭제 후 아래있던 게시물 위로 앞당기기
+						for(int j = bno; j<boardlist.length; j++) {
+							if(j==boardlist.length-1) boardlist[boardlist.length-1] = null;
+							// i가 마지막인덱스 와 같으면 마지막인덱스에는 null 대입
+							else boardlist[j] = boardlist[j+1];
+							// 마지막 인덱스가 아니면 뒤에있는 게시물 당겨오기
+						} // for e
+					} // if e
+					else {
+						 System.err.println("알림)비밀번호가 다릅니다 [삭제실패]");
+					} // else e
+
 				} // else if e
-				else if(ch2==3) {}
+				else if(ch2==3) {
+					System.out.println("게시물 비밀번호 : ");	 String password = scanner.next();
+					
+					if(boardlist[bno].password.equals(password)) {
+						System.out.println("수정할 제목 : ");	boardlist[bno].title = scanner.next();
+						System.out.println("수정할 내용 : ");	boardlist[bno].content = scanner.next();
+						System.out.println("알림)내용이 수정되었습니다.");
+					} // if e
+					else {
+						System.err.println("알림)비밀번호가 다릅니다 [수정실패]");
+					} // else e
+				} // else if e
 				else {
 					System.err.println("알림)알 수 없는 번호입니다.");
 				} // else e

@@ -2,7 +2,7 @@ package Day06;
 
 import java.util.Scanner;
 
-public class Day06_6 {
+public class Day06_6_비회원제게시판 {
 
 	// 비회원제 게시판[클래스 버전]
 	
@@ -68,7 +68,53 @@ public class Day06_6 {
 			} // if e
 			////////////////////////////////////////////////////////////////////////////
 			else if(ch==2) { // 2. 글보기
+				 System.out.println("게시물 번호(인덱스)  선택 : ");	 int bno = scanner.nextInt();
+				 System.out.println("--------------- 글보기 페이지 ---------------");
+				 System.out.printf("작성자 : %s  제목 : %s \n",
+						 boardlist[bno].writer, boardlist[bno].title );
+				 System.out.printf("내용 : %s \n", boardlist[bno].content);
+				 System.out.println("-----------------------------------------");
+				 System.out.println("1. 목록보기 2.삭제 3.수정  선택 : ");
 				 
+				 int ch2 = scanner.nextInt();
+				 if(ch2==1) {}
+				 else if(ch2==2) {
+					 System.out.println("현 게시물 비밀번호 : ");		String password = scanner.next();
+					 if(boardlist[bno].password.equals(password)) {
+						 System.out.println("알림))삭제 성공");
+						 boardlist[bno] = null;
+						 for(int i = bno; i<boardlist.length; i++) { // 배열길이 = 100  인덱스 : 0~99
+							 if(i==boardlist.length-1) boardlist[boardlist.length-1] = null;
+							// i가 마지막인덱스 와 같으면 마지막인덱스에는 null 대입
+							 else boardlist[i] = boardlist[i+1];
+							// 마지막 인덱스가 아니면 인덱스 당기기 
+								// *  	만약에 2번 인덱스 삭제시 
+								// 		2인덱스 = 3인덱스 
+								//	  	3인덱스 = 4인덱스 
+								//		4인덱스 = 5인덱스 
+								//      ~~~~~~~~~~~
+								//		98인덱스 = 99인덱스 [ 0번~99번 -> 100개 인덱스 ]
+								//		99인덱스 = null [ 99번 인덱스 : 마지막인덱스 ] 
+						 } // for e
+					 } // if e
+					 else {
+						 System.err.println("알림))비밀번호가 다릅니다 [ 삭제실패 ]");
+					 } // else e
+				 } // else if e
+				 else if(ch2==3) {
+					 System.out.println("현 게시물 비밀번호 : ");		String password = scanner.next();
+					 if(boardlist[bno].password.equals(password)) {
+						 System.out.println("수정할 제목 : ");	boardlist[bno].title = scanner.next();
+						 System.out.println("수정할 내용 : ");	boardlist[bno].content = scanner.next();
+						 System.out.println(" 알림)) 내용이 수정되었습니다.");
+					 } // if e
+					 else {
+						 System.err.println(" 알림))비밀번호가 다릅니다 [ 수정실패 ]");
+					 } // else e
+				 } // else if e
+				 else {
+					 System.err.println("알림)) 알수없는 번호입니다.");
+				 } // else e
 			} // else if e
 			else {
 				System.err.println("알림))알수없는 번호입니다.");

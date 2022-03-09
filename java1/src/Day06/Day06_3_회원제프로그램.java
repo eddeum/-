@@ -2,7 +2,7 @@ package Day06;
 
 import java.util.Scanner;
 
-public class Day06_3 {
+public class Day06_3_회원제프로그램 {
 
 	public static void main(String[] args) {
 		

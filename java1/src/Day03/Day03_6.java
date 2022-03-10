@@ -91,20 +91,214 @@ public class Day03_6 { // cs
 		//	*****	i = 5	b = 0	s = 5
 		//			b는 입력받을 줄수-현재줄수
 		
-		System.out.print("문제5) 줄수 : ");	int line5 = scanner.nextInt();
-		for(int i = 1; i<=line5; i++) {
-			
-			// 1. 공백처리(공백처리 먼저해야함 -> 왼쪽부터 공백이 먼저있음)
-			for(int b = 1; b<=line5-i; b++) {
-				System.out.print(" ");	// 공백 => 스페이스바
+//		System.out.print("문제5) 줄수 : ");	int line5 = scanner.nextInt();
+//		for(int i = 1; i<=line5; i++) {
+//			
+//			// 1. 공백처리(공백처리 먼저해야함 -> 왼쪽부터 공백이 먼저있음)
+//			for(int b = 1; b<=line5-i; b++) {
+//				System.out.print(" ");	// 공백 => 스페이스바
+//			}
+//			// 2. 별찍기
+//			for(int s = 1; s<=i; s++) {
+//				System.out.print("*");
+//			}
+//			// 3. 줄바꿈
+//			System.out.println();
+//		} // for e
+		
+		// 별문제6 : 입력받은 줄 수 만큼 출력 
+		//				i = 줄	b = 공백			s = 별		
+		// *****	 	i=1		b=				s = 1 2 3 4 5 
+		//  ****		i=2		b=1				s = 1 2 3 4
+		//	 ***		i=3		b=1 2			s = 1 2 3 
+		//	  **		i=4		b=1 2 3 		s = 1 2
+		//	   *		i=5		b=1 2 3 4 		s = 1
+		//		    	b는 1부터 현재줄수-1 까지 1씩증가 공백 출력 
+		//		    	s는 1부터 입력받은수-현재줄수+1 까지 별 출력 
+		
+//		System.out.print("문제6) 줄수 : "); int line6 = scanner.nextInt();
+//		
+//		for( int i =1 ; i<=line6 ; i++ ) {
+//			// 1. 공백찍기
+//			for( int b = 1 ; b<=i-1 ; b++ ) {
+//				System.out.print(" ");
+//			} // for e
+//			// 2. 별찍기 
+//			for( int s = 1 ; s<=line6-i+1; s++ ) {
+//				System.out.print("*");
+//			} // for e
+//			// 3. 줄바꿈
+//			System.out.println();
+//		} // for e
+		
+		// 별문제7 : 입력받은 줄 수 만큼 출력 
+		//				i = 줄		b = 공백			s = 별	
+		//     *		i=1			b= 1 2 3 4		s = 1 					i*2 = 2-1	
+		//    ***		i=2			b= 1 2 3 		s = 1 2 3 				i*2 = 4-1
+		//   *****		i=3			b= 1 2 			s = 1 2 3 4 5 			i*2 = 6-1
+		// 	*******		i=4			b= 1			s = 1 2 3 4 5 6 7 		i*2 = 8-1
+		// *********	i=5			b=				s = 1 2 3 4 5 6 7 8 9	i*2 = 10-1
+		//			b는 1부터 입력받은수-현재줄수 까지 1씩증가 공백 출력 
+		//			s는 1부터 현재줄수*2-1 까지 1씩증가 공백 출력 
+		
+//		System.out.print("문제7) 줄수 : "); int line7 = scanner.nextInt();
+//		
+//		for( int i = 1 ; i<=line7 ; i++ ) {
+//			// 1. 공백찍기
+//			for( int b= 1 ; b<=line7-i ; b++) {
+//				System.out.print(" ");
+//			} // for e
+//			// 2. 별찍기
+//			for( int s= 1; s<=i*2-1; s++ ) {
+//				System.out.print("*");
+//				// System.out.print(i); // 문제8
+//			} // for e
+//			// 3. 줄바꿈
+//			System.out.println();
+//		} // for e
+		
+		// 별문제8 : 입력받은 줄 수 만큼 출력 
+		//				i = 줄		b = 공백			s = 별	
+		//     1		i=1			b= 1 2 3 4		s = 1 					i*2 = 2-1	
+		//    222		i=2			b= 1 2 3 		s = 1 2 3 				i*2 = 4-1
+		//   33333		i=3			b= 1 2 			s = 1 2 3 4 5 			i*2 = 6-1
+		// 	4444444		i=4			b= 1			s = 1 2 3 4 5 6 7 		i*2 = 8-1
+		// 555555555	i=5			b=				s = 1 2 3 4 5 6 7 8 9	i*2 = 10-1
+		//			b는 1부터 입력받은수-현재줄수 까지 1씩증가 공백 출력 
+		//			s는 1부터 현재줄수*2-1 까지 1씩증가 공백 출력 
+		
+//		System.out.println("문제8) 줄수 : ");	int line8 = scanner.nextInt();
+//		
+//		for(int i = 1; i<=line8; i++) {
+//			for(int b = 1; b<=line8-i; b++) {
+//				System.out.print(" ");
+//			} // for e
+//			for(int s = 1; s<=i*2-1; s++) {
+//				System.out.print(i);
+//			} // for e
+//			System.out.println();
+//		} // for e
+		
+		// 별문제9
+		//				i = 줄		b = 공백			s = 별	
+		//  *********	i=1			b= 				s = 1 2 3 4 5 6 7 8 9 					
+		//   *******	i=2			b= 1  			s = 1 2 3 4 5 6 7 				
+		//    *****		i=3			b= 1 2 			s = 1 2 3 4 5 			
+		// 	   ***		i=4			b= 1 2 3		s = 1 2 3  		
+		//      *		i=5			b= 1 2 3 4		s = 1	
+		//			b는 1부터 입력받은수-1 까지 1씩증가 공백 출력 
+		//			s는 1부터 입력받은수*2-(현재줄수*2-1) 까지 1씩증가 공백 출력 
+		
+//		System.out.print("문제9 정수 입력 : ");	int 문제9 = scanner.nextInt();
+//		for( int i = 1 ; i<=문제9 ; i++ ) {
+//			// 공백찍기
+//			for( int b = 1 ; b<=i-1 ; b++ ) {System.out.print(" ");}
+//			//별찍기
+//			for( int s = 1 ; s<= 문제9*2 - (i*2-1) ; s++ ) {System.out.print("*");}
+//			//줄바꿈
+//			System.out.println();
+//		}
+//		
+		// 별문제10
+		
+		System.out.print("문제10 정수 입력 : ");	int 문제10 = scanner.nextInt();
+		for( int i = 1 ; i<=문제10/2 ; i++ ) {
+			// 1. 공백찍기
+			for( int b= 1 ; b<=문제10/2-i ; b++) {
+				System.out.print(" ");
 			}
 			// 2. 별찍기
-			for(int s = 1; s<=i; s++) {
+			for( int s= 1; s<=i*2-1; s++ ) {
 				System.out.print("*");
 			}
 			// 3. 줄바꿈
 			System.out.println();
 		}
+		for( int i = 1 ; i<=문제10/2 ; i++ ) {
+			// 공백찍기
+			for( int b = 1 ; b<=i-1 ; b++ ) {System.out.print(" ");}
+			//별찍기
+			for( int s = 1 ; s<= 문제10/2*2 - (i*2-1) ; s++ ) {System.out.print("*");}
+			//줄바꿈
+			System.out.println();
+		}
+		
+		// 별문제11
+		System.out.print("문제11 정수 입력 : ");	int 문제11 = scanner.nextInt();
+		
+		for( int i = 1 ; i<=문제11 ; i++ ) { // i = 행 = 가로 
+			for( int j = 1 ; j<=문제11 ; j++ ) { // j = 열 = 세로 
+				if( i == j ) System.out.print("*"); // 행 = 열 동일한 경우 별찍기 
+				else if( (i+j) == (문제11+1) ) System.out.print("*"); // 행 과 열의 더한값이 최대줄수+1 과 동일한 경우 별찍기
+				else System.out.print(" ");
+			}
+			// 줄바꿈 
+			System.out.println();
+		}
+		
+		//별문제12
+		
+		System.out.print("문제12 정수 입력 : ");	int N = scanner.nextInt();
+	      int col = 0;
+	      int space = 2;
+	      
+	      for(int i=1; i<=N; i++) {
+	         for(int j=0; j<i; j++)
+	            System.out.print("*");
+	         
+	         for(int j=(i-1)*2; j<(N*2)-2; j++)
+	            System.out.print(" ");
+	         for(int j=0; j<i; j++)
+	            System.out.print("*");
+	         
+	         System.out.println();
+	      }
+	      
+	      for(int i=N; i<(N*2)-1; i++) {
+	         for(int j=col; j<N-1; j++)
+	            System.out.print("*");
+	         
+	         for(int j=0; j<space; j++)
+	            System.out.print(" ");
+	         
+	         for(int j=col; j<N-1; j++)
+	            System.out.print("*");
+	         
+	         System.out.println();
+	         col ++;
+	         space += 2;
+	      }
+		
+	      //별문제13
+	      	System.out.print("문제13 정수 입력 : "); 	 int n = scanner.nextInt();
+	         
+	        String map[] = new String[n];
+	        map[0] = "  *  ";
+	        map[1] = " * * ";
+	        map[2] = "*****";
+	         
+	        for (int k = 1; 3 * (int)Math.pow(2, k) <= n; ++k) {
+	        	
+	        	 int bottom = 3 * (int)Math.pow(2, k);
+	             int middle = bottom / 2;
+	              
+	             for (int i = middle; i < bottom; ++i) {
+	                 map[i] = map[i - middle] + " " + map[i -middle];
+	             }
+	              
+	             String space2 = "";
+	             while (space2.length() < middle) {
+	                 space2 += " ";
+	             }
+	             for (int i = 0; i < middle; ++i) {
+	                 map[i] = space2 + map[i] + space2;
+	             }
+	            
+	        }
+	         
+	        for (int i = 0; i < n; ++i) {
+	            System.out.println(map[i]);
+	        }
 		
 	} // me
 

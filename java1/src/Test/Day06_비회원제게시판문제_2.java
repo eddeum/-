@@ -64,7 +64,7 @@ public class Day06_비회원제게시판문제_2 {
 						System.out.println("게시물 삭제 성공");
 						boardlist[bno] = null;
 						
-						for(int j = 0; j<boardlist.length; j++;) {
+						for(int j = 0; j<boardlist.length; j++) {
 							if(j == boardlist.length-1) {
 								boardlist[boardlist.length-1] = null;	// i가 마지막인덱스 와 같으면 마지막인덱스에는 null 대입
 							} // if e

@@ -95,7 +95,7 @@ public class Day05_회원제방문록문제_1 {
 					} // for e
 					
 					if(logincheck == false) System.err.println("알림)회원정보가 없거나 다릅니다.");
-				
+				} // while e
 			} // else if e
 			else System.err.println("알림)알 수 없는 번호입니다.");
 			

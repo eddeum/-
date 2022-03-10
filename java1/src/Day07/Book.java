@@ -26,22 +26,22 @@ public class Book {
 		// 1. 도서검색
 	void 도서검색() {
 		System.out.println("---------- 도서검색 페이지 ----------");
-		System.out.println("도서명 검색 : "); String bname = Day07_5_BookApplication.scanner.next();
-		
-		for(Book temp : Day07_5_BookApplication.booklist) {
-			if(temp != null && temp.bname.equals(bname)) {
-				System.out.printf("도서코드:%s\t도서명:%s\t작가:%s\t도서대여여부:%s\t대여인ID:%s \n"
-						,temp.ISBN, temp.bname, temp.bwriter, temp.brental, temp.mid);
-				return;
-			} // if e
-		} // for e
-		System.err.println("알림))동일한 책을 찾을 수 없습니다.");
-	} // void e
+//		System.out.println("도서명 검색 : "); String bname = Day07_5_BookApplication.scanner.next();
+//		
+//		for(Book temp : Day07_5_BookApplication.booklist) {
+//			if(temp != null && temp.bname.equals(bname)) {
+//				System.out.printf("도서코드:%s\t도서명:%s\t작가:%s\t도서대여여부:%s\t대여인ID:%s \n"
+//						,temp.ISBN, temp.bname, temp.bwriter, temp.brental, temp.mid);
+//				return;
+//			} // if e
+//		} // for e
+//		System.err.println("알림))동일한 책을 찾을 수 없습니다.");
+//	} // void e
 	
 		// 2. 도서목록
 	void 도서목록() {
 		System.out.println("---------- 도서목록 페이지 ----------");
-		System.out.println("도서코드\t도서명\t작가\t도서대여여부");
+		System.out.println("도서코드\t도서명\t작가\t대여가능여부");
 		
 		for(Book temp : Day07_5_BookApplication.booklist) {
 			if(temp != null) { // 도서가 존재하면

@@ -40,7 +40,8 @@ public class Member {
 		
 		System.out.println("비밀번호 : ");	String password = 		Day07_5_BookApplication.scanner.next();
 		System.out.println("이름 : ");	String name = 			Day07_5_BookApplication.scanner.next();
-		System.out.println("연락처 : ");	String phone = 			Day07_5_BookApplication.scanner.next();
+		System.out.println("연락처 : ");	String phone 
+		= 			Day07_5_BookApplication.scanner.next();
 			// * scanner 객체가 다른 클래스 내 static으로 선언되어있음.		// * 클래스명.필드명.함수명();
 			// * static 필드, 메소드는 객체없이 호출가능[클래스명.필드명/메소드명]
 		

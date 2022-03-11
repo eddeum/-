@@ -107,7 +107,7 @@ public class Day07_5_BookApplication {
 			if(ch==1) {book.도서검색();}
 			else if(ch==2) {book.도서목록();}
 			else if(ch==3) {book.도서대여(loginid);}
-			else if(ch==4) {book.도서반납();}
+			else if(ch==4) {book.도서반납(loginid);}
 			else if(ch==5) {return;} // 일반회원메뉴 메소드 종료[로그아웃]
 			else {System.err.println("알림))알 수 없는 번호입니다.");}
 		} // while e

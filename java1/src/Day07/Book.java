@@ -27,7 +27,8 @@ public class Book {
 	void 도서검색() {
 		System.out.println("---------- 도서검색 페이지 ----------");
 //		System.out.println("도서명 검색 : "); String bname = Day07_5_BookApplication.scanner.next();
-//		
+//		System.out.println("");
+		
 //		for(Book temp : Day07_5_BookApplication.booklist) {
 //			if(temp != null && temp.bname.equals(bname)) {
 //				System.out.printf("도서코드:%s\t도서명:%s\t작가:%s\t도서대여여부:%s\t대여인ID:%s \n"
@@ -36,7 +37,7 @@ public class Book {
 //			} // if e
 //		} // for e
 //		System.err.println("알림))동일한 책을 찾을 수 없습니다.");
-//	} // void e
+	} // void e
 	
 		// 2. 도서목록
 	void 도서목록() {
@@ -103,7 +104,7 @@ public class Book {
 	} // void e
 	
 	// * 현재 로그인 한 회원이 대여중인 도서목록
-	void 도서대여목록() {
+	void 도서대여목록(String loginid) {
 		System.out.println("---------- 도서목록 페이지 ----------");
 		System.out.println("도서코드\t도서명\t작가\t도서대여여부");
 		

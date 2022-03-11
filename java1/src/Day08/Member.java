@@ -49,7 +49,7 @@ public class Member {
 			i++;
 		}//for종료
 		return false;
-	}//bool end
+	}//boolean end
 	
 	
 	String 로그인() {
@@ -59,7 +59,7 @@ public class Member {
 		for(Member temp:Day08_5.member) {
 			if(temp!=null&&temp.id.equals(id)&&
 					temp.pw.equals(pw)) {
-				return temp.name; //////////////////////////////////////
+				return temp.id;
 			}//if종료
 		}//for문종료
 		return null;//실패시 null반환

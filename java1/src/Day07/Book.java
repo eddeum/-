@@ -60,11 +60,14 @@ public class Book {
 		System.out.println("도서 ISBN : ");	String isbn = Day07_5_BookApplication.scanner.next();
 		
 		for(Book temp : Day07_5_BookApplication.booklist) {
+			// * 임시객체 : 배열이름
+				// 배열내 0번인덱스부터 마지막인덱스까지 하나씩 임시 객체 대입
+				// temp 수정 X -> 배열의 i번째로 수정 O
 			if(temp != null && temp.ISBN.equals(isbn)) {
 				if(temp.brental) {
 					System.out.println("알림))해당도서 대여합니다.");
-					temp.brental = false; // 대여중으로 변경
-					temp.mid = loginid;
+					temp.brental = false; // 대여중으로 변경 ////////////////////////수정하기
+					temp.mid = loginid;					////////////////////////수정하기
 					return;
 				} // if e
 				else {
@@ -89,8 +92,8 @@ public class Book {
 					} // if e
 					else { // 대여중이면
 						System.out.println("알림))반납 완료!!!!");
-						temp.brental = true;
-						temp.mid = null;
+						temp.brental = true;	////////////////////////수정하기
+						temp.mid = null;		////////////////////////수정하기
 						return;
 					} // else e
 				} // if e

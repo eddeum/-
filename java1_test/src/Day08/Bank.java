@@ -77,7 +77,23 @@ public class Bank {
 	} // void e
 	
 		// 3. 출금
-	void 출금() {}
+	void 출금() { //// 잔액확인하기
+		System.out.println("계좌번호 : "); 	int ano = Day08_모바일뱅크프로그램_1.scanner.nextInt();
+		System.out.println("출금액 : "); 		int 출금 = Day08_모바일뱅크프로그램_1.scanner.nextInt();
+		System.out.println("통장 비밀번호 : "); String bpassword = Day08_모바일뱅크프로그램_1.scanner.next();
+		
+		int i = 0;
+		for(Bank temp : Day08_모바일뱅크프로그램_1.banklist) {
+			if(temp != null && temp.ano == ano && temp.bpassword.equals(bpassword)) {
+				System.out.println(출금+"원 출금되었습니다");
+				Day08_모바일뱅크프로그램_1.banklist[i].balance -= 출금;
+				return;
+			} // if e
+		} // for e
+		
+		
+		
+	} // void e
 		// 4. 이체
 	void 이체 () {}
 		// 5. 대출

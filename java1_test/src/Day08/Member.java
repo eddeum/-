@@ -58,8 +58,7 @@ public class Member {
 		
 		for(Member temp : Day08_모바일뱅크프로그램_1.memberlist) {
 			if(temp != null && temp.id.equals(id) && temp.password.equals(password)) {
-				System.out.println("안녕하세요 " + temp.name + "님 로그인되셨습니다.");
-				return temp.name; ////////////////////////////
+				return temp.id; ////////////////////////////
 			} // if e
 		} // for e	
 		return null;

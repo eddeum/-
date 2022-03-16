@@ -29,6 +29,8 @@ public class 테스트 {
 					
 					학생 학생 = new 학생();
 					
+
+					
 					for(int i = 0; i<학생배열.length; i++) {
 						if(학생배열[i] == null) {
 							학생배열[i] = 학생;

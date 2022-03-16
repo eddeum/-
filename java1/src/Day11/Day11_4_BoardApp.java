@@ -45,7 +45,7 @@ public class Day11_4_BoardApp {
 					System.out.println("작성자 : ");				String 작성자 = scanner.next();
 					System.out.println("비밀번호[수정/삭제시] : ");	String 비밀번호 = scanner.next();
 					
-					Controller.write(제목, 내용, 작성자, 비밀번호);	// 인수전달
+					Controller.write(제목, 내용, 비밀번호, 작성자);	// 인수전달
 					
 				} // if e
 				
@@ -63,16 +63,27 @@ public class Day11_4_BoardApp {
 					// 메뉴
 					System.out.println("1.뒤로가기 2.수정 3.삭제 4.댓글쓰기  선택 : ");	int ch2 = scanner.nextInt();
 					if(ch2==1) {}
-					else if(ch==2) {
-						Controller.update(); // 수정할 인덱스번호, 패스워드, 수정할제목, 수정할내용
+					else if(ch2==2) {
+						System.out.println("현 게시물 패스워드 : ");	String password = scanner.next();
+						scanner.nextLine(); // 일반next 다음으로 nextLine 사용하게되면 문제발생
+						System.out.println("변경할 제목 : ");  		String title = scanner.nextLine();
+						System.out.println("변경할 내용 : ");  		String content = scanner.nextLine();
+						
+						boolean result = Controller.update(index, password, title, content); // 수정할 인덱스번호, 패스워드, 수정할제목, 수정할내용
+						
+						if(result) System.out.println("알림)수정 성공");
+						else System.err.println("알림)수정 실패(패스워드가 다릅니다.)");
 						
 					} // else if e
-					else if(ch==3) {
-						System.out.println("인덱스번호 : ");
+					else if(ch2==3) {
+						System.out.println("현 게시물 패스워드 : ");	String password = scanner.next();
+						boolean result = Controller.delete(index, password);
+						if(result) System.out.println("알림)삭제 성공");
+						else System.err.println("알림)삭제 실패(패스워드가 다릅니다.)");
 						
 //						Controller.delete(인덱스번호, 비밀번호); // 삭제할 인덱스번호, 패스워드 => 인수
 					} // else if e
-					else if(ch==4) {
+					else if(ch2==4) {
 						Controller.replywrite(); // 인덱스번호, 댓글내용, 댓글패스워드, 댓글작성자 => 인수
 					} // else if e
 					else {}

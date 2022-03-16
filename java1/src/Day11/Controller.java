@@ -14,9 +14,9 @@ public class Controller {
 	
 	
 	// 2. 쓰기메소드
-	public static void write(String 제목, String 내용, String 작성자, String 비밀번호) {
+	public static void write(String 제목, String 내용, String 비밀번호, String 작성자) {
 		// 1. 객체화[변수가 4개 -> 1개 객체]
-		Board board = new Board(제목, 내용, 작성자, 비밀번호);
+		Board board = new Board(제목, 내용, 비밀번호, 작성자); ///////////////////////////
 		// 2. 리스트에 저장
 		boardlist.add(board);
 		// 3. 파일에 저장
@@ -25,9 +25,30 @@ public class Controller {
 	} // 쓰기 e
 
 	// 4. 수정메소드
-	public static void update() {}
-	// 5. 삭제메소드
-	public static void delete() {
+	public static boolean update(int index, String password, String title, String content) {
+		if(password.equals(boardlist.get(index).getPassword())) {
+			boardlist.get(index).setTitle(title);
+			boardlist.get(index).setContent(content);
+			save(); // 파일내에서 수정된 리스트 업데이트
+			return true;
+		} // if e
+		else {
+			return false;
+		} // else e
+		
+	} // 수정 e
+	
+	// 5. 삭제메소드				// 현게시물번호[인덱스] 현게시물팻워드
+	public static boolean delete(int index, String password) {
+		
+		if(password.equals(boardlist.get(index).getPassword())) {
+			// 입력받은패스워드와 해당 인덱스 게시물번호의 패스워드가 동일하면
+			boardlist.remove(index); // add():추가  get():호출 remove():삭제
+			save();	// 파일내에서 삭제된 리스트 업데이트
+			return true;
+		}else {
+			return false;
+		} // else e
 		
 	} // 삭제 e
 	// 6. 댓글쓰기메소드

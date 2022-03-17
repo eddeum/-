@@ -8,14 +8,14 @@ public class Student {
 	private int 국어;
 	private int 영어;
 	private int 수학;
-	private int 총점;
-	private double 평균;
-	private int 석차;
+	private int 총점 = 국어+영어+수학;
+	private double 평균 = 총점/3;
+
 	
 	// 2. 생성자
 	public Student() {}
-	
-	public Student(int 번호, String 이름, int 국어, int 영어, int 수학, int 총점, double 평균, int 석차) {
+
+	public Student(int 번호, String 이름, int 국어, int 영어, int 수학, int 총점, double 평균) {
 		super();
 		this.번호 = 번호;
 		this.이름 = 이름;
@@ -24,11 +24,9 @@ public class Student {
 		this.수학 = 수학;
 		this.총점 = 총점;
 		this.평균 = 평균;
-		this.석차 = 석차;
 	}
-	
+
 	// 3. 메소드
-	
 	public int get번호() {
 		return 번호;
 	}
@@ -84,15 +82,8 @@ public class Student {
 	public void set평균(double 평균) {
 		this.평균 = 평균;
 	}
-
-	public int get석차() {
-		return 석차;
-	}
-
-	public void set석차(int 석차) {
-		this.석차 = 석차;
-	}
-
 	
+	
+
 
 }

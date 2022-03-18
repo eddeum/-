@@ -28,33 +28,31 @@ public class Day12_4 {
 			// 모든 차량 번호 출력
 			System.out.println("*** 주차중인 모든 차량번호 ***");
 			for(String temp : carlist) {
-				if(temp != null) System.out.println(temp);}
-			
-			for(String temp : carlist) {
-				if(temp != null) {
+				if(temp != null) { 
 					if(Integer.parseInt(temp)%2 == 0) { // 수%2 == 0 나머지가 0이면 짝수
 						System.out.println(temp+"[짝]");
-						
+					} // if e
+					else {			// 수%2 == 1 나머지가 1이면 홀수 
+						System.out.print( temp+"[홀]  " );
+					} // else e
+				} // if e
+			
+			} // for e
 						
 						
 			
 			// 홀수차량 번호 출력
 			System.out.println("*** 주차중인 모든 홀수 차량번호 ***");
-		
-						for(int i = 0; i<evenlist.length; i++) {
-							if(evenlist[i] == null) {evenlist[i] = temp; break;}
-						} // for e
-						
-					} // if e
-					
-					else { // 수%2 == 1 나머지가 1이면 짝수
-						System.out.println(temp+"[홀]");
-					}
-				} // if e
-				
+			for(String temp : oddlist) {
+				if(temp != null) {System.out.println(temp+ " ");}
 			} // for e
+						
+		
 			// 짝수차량 번호 출력
 			System.out.println("*** 주차중인 모든 짝수 차량번호 ***");
+			for(String temp : evenlist) {
+				if(temp != null) {System.out.println(temp+ " ");}
+			} // for 
 			
 			
 			System.out.println("1.차량입차"); int ch = scanner.nextInt();
@@ -73,13 +71,13 @@ public class Day12_4 {
 					if(carlist[i]==null) carlist[i] = strnum; save = true; break;
 				} // for e
 				
-				// 짝수홀수 차량분배
-				
-				
-				
-				
-				
-				
+				if(save == true) {
+					// 짝수홀수 차량분배	
+					
+					
+					
+					
+				} // if e
 				
 				// 만약에 빈공간이 없으면 만차
 				if(save==false) System.out.println("만차[주차 불가]");

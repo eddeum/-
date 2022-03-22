@@ -3,19 +3,19 @@ package Test2;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class Parking_2차 {
+public class Parking {
 	
 	// 1. 필드
 	private LocalDate 날짜;
 	private String 차량번호;
-	private LocalTime 입차시간;
-	private LocalTime 출차시간;
+	private String 입차시간;
+	private String 출차시간;
 	private int 금액;
 	
 	// 2. 생성자
-	public Parking_2차() {}
+	public Parking() {}
 
-	public Parking_2차(LocalDate 날짜, String 차량번호, LocalTime 입차시간, LocalTime 출차시간, int 금액) {
+	public Parking(LocalDate 날짜, String 차량번호, String 입차시간, String 출차시간, int 금액) {
 		super();
 		this.날짜 = 날짜;
 		this.차량번호 = 차량번호;
@@ -23,7 +23,15 @@ public class Parking_2차 {
 		this.출차시간 = 출차시간;
 		this.금액 = 금액;
 	}
-	
+
+
+	public Parking(LocalDate 날짜, String 차량번호, String 입차시간) {
+		super();
+		this.날짜 = 날짜;
+		this.차량번호 = 차량번호;
+		this.입차시간 = 입차시간;
+	}
+
 	// 3. 메소드
 	public LocalDate get날짜() {
 		return 날짜;
@@ -41,19 +49,19 @@ public class Parking_2차 {
 		this.차량번호 = 차량번호;
 	}
 
-	public LocalTime get입차시간() {
+	public String get입차시간() {
 		return 입차시간;
 	}
 
-	public void set입차시간(LocalTime 입차시간) {
+	public void set입차시간(String 입차시간) {
 		this.입차시간 = 입차시간;
 	}
 
-	public LocalTime get출차시간() {
+	public String get출차시간() {
 		return 출차시간;
 	}
 
-	public void set출차시간(LocalTime 출차시간) {
+	public void set출차시간(String 출차시간) {
 		this.출차시간 = 출차시간;
 	}
 
@@ -64,7 +72,9 @@ public class Parking_2차 {
 	public void set금액(int 금액) {
 		this.금액 = 금액;
 	}
-	
+
+
+
 	
 	
 	

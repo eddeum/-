@@ -2,12 +2,12 @@ package Test;
 
 import java.util.Scanner;
 
-public class 테스트 {
+public class 테스트_1차 {
 	
 	public static void main(String[] args) {
 		
 		// 배열
-		학생[] 학생배열 = new 학생[100];
+		학생_1차[] 학생배열 = new 학생_1차[100];
 		Scanner scanner = new Scanner(System.in);
 		
 		
@@ -27,7 +27,7 @@ public class 테스트 {
 					int 총점 = 국어+영어+과학;
 					double 평균 = 총점/3;
 					
-					학생 학생 = new 학생();
+					학생_1차 학생 = new 학생_1차();
 					
 
 					

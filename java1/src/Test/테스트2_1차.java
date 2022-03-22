@@ -2,11 +2,11 @@ package Test;
 
 import java.util.Scanner;
 
-public class 테스트2 {
+public class 테스트2_1차 {
 
 	public static void main(String[] args) {
 		
-		학생[] studentlist = new 학생[100];
+		학생_1차[] studentlist = new 학생_1차[100];
 		Scanner scanner = new Scanner(System.in);
 		
 		while(true) {
@@ -18,7 +18,7 @@ public class 테스트2 {
 				System.out.printf("번호 이름 국어 영어 수학 총점 평균 석차 \n");
 				System.out.println("-------------------------");
 				
-				for(학생 temp : studentlist) {
+				for(학생_1차 temp : studentlist) {
 					if(temp != null) {
 						System.out.println();
 					}

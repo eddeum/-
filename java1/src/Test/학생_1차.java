@@ -1,6 +1,6 @@
 package Test;
 
-public class 학생 {
+public class 학생_1차 {
 	
 	// 1. 필드
 	private String 이름;
@@ -9,9 +9,9 @@ public class 학생 {
 	private int 과학;
 	
 	// 2. 생성자
-	public 학생() {}
+	public 학생_1차() {}
 
-	public 학생(String 이름, int 국어, int 영어, int 과학) {
+	public 학생_1차(String 이름, int 국어, int 영어, int 과학) {
 		super();
 		this.이름 = 이름;
 		this.국어 = 국어;

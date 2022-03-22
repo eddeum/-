@@ -1,4 +1,4 @@
-package Test;
+package Test1;
 
 import java.util.Scanner;
 
@@ -46,7 +46,7 @@ public class Test_1 {
 					double 평균 = 총점/3;
 					int 석차 = 1;
 				
-					Test.Student student = new Test.Student(번호, 이름, 국어, 영어, 수학, 총점, 평균, 석차);
+					Test1.Student student = new Test1.Student(번호, 이름, 국어, 영어, 수학, 총점, 평균, 석차);
 				
 					int i = 0;
 					for(Student temp : studentlist) {

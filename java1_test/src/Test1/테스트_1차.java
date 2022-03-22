@@ -1,6 +1,8 @@
-package Test;
+package Test1;
 
 import java.util.Scanner;
+
+import Test.학생_1차;
 
 public class 테스트_1차 {
 	

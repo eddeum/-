@@ -2,7 +2,7 @@ package Day12;
 
 import java.io.IOException;
 
-public class Day12_3 {
+public class Day12_3_도서검색프로그램 {
 
 	public static void main(String[] args) throws IOException {
 		

@@ -77,9 +77,9 @@ public class Day08_5 {
 			Bank bank = new Bank();
 		
 			if(ch==1) {bank.계좌생성();}
-			else if(ch==2) {bank.입금();}
-			else if(ch==3) {bank.출금();}
-			else if(ch==4) {bank.이체();}
+			else if(ch==2) {}
+			else if(ch==3) {}
+			else if(ch==4) {}
 			else if(ch==5) {}
 			else if(ch==6) {bank.계좌목록();}
 			else if(ch==7) { return;}

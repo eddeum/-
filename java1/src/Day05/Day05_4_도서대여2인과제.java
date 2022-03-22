@@ -2,7 +2,7 @@ package Day05;
 
 import java.util.Scanner;
 
-public class Day05_4 { // cs
+public class Day05_4_도서대여2인과제 { // cs
 	
 	public static void main(String[] args) { // ce
 		

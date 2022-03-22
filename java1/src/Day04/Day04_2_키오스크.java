@@ -2,7 +2,7 @@ package Day04;
 
 import java.util.Scanner;
 
-public class Day04_2 {
+public class Day04_2_키오스크 {
 	
 	// 자판기 프로그램
 	// 1. 메뉴판[1.콜라(300) 2.환타(200) 3.사이다(100) 4.결제]

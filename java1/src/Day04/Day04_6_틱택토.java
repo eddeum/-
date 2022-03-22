@@ -3,7 +3,7 @@ package Day04;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Day04_6 { // cs
+public class Day04_6_틱택토 { // cs
 	
 	/* 삼목게임[틱택토 게임]
 	 * 	게임판 9칸 생성 

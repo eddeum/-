@@ -63,7 +63,7 @@ public class Bank {
 			if(temp != null && temp.password.equals(password)) {
 				System.out.println("알림)" + 입금 + "원 입금되었습니다.");
 				temp.bbalance += 입금;	
-				temp.id = loginid; ///////////////////////
+//				temp.id = loginid; ///////////////////////
 				break;
 			} // if e
 			else {

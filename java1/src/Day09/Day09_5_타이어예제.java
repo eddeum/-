@@ -1,6 +1,6 @@
 package Day09;
 
-public class Day09_5 {
+public class Day09_5_타이어예제 {
 
 	public static void main(String[] args) {
 		

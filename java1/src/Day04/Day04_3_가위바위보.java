@@ -3,7 +3,7 @@ package Day04;
 import java.util.Random;	// random 자동완성
 import java.util.Scanner;
 
-public class Day04_3 { // c s
+public class Day04_3_가위바위보 { // c s
 	
 	/*
 	 * 가위바위보 게임

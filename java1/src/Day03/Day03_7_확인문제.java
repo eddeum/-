@@ -1,6 +1,6 @@
 package Day03;
 
-public class Day03_7 {
+public class Day03_7_확인문제 {
 
 	public static void main(String[] args) {
 		

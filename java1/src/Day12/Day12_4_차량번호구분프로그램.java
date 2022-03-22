@@ -3,7 +3,7 @@ package Day12;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Day12_4 {
+public class Day12_4_차량번호구분프로그램 {
 	
 	// 차량번호 구분 프로그램
 	// 조건

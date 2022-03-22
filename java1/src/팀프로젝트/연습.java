@@ -27,19 +27,14 @@ public class 연습 {
 					} // if e
 					else {
 
-					} // 
+					} // else e
 				}// for e
 			} // if e
 			else if(ch==2) {
 				System.out.println("차량번호 입력 : "); 	int cnum = scanner.nextInt();
 
 				// 요금계산
-				for(Car temp : parklist) {
-					if()
-				} // for e
-				
-				
-				
+
 				
 			} // else if e
 			else if(ch==3) {

@@ -48,11 +48,11 @@ public class 호텔예매 {
 				System.out.println("----------------- 방 예약 현황표 -----------------");
 				System.out.println();
 				System.out.println("번호\t방이름\t\t금액\t\t예약여부");
-				System.out.println("0\t트윈룸\t10,000\t"+예약가능[0]);
-				System.out.println("0\t더블룸\t0,000\t"+예약가능[1]);
-				System.out.println("0\t바다뷰트윈룸\t30,000\t"+예약가능[2]);
-				System.out.println("0\t바다뷰더블룸\t40,000\t"+예약가능[3]);
-				System.out.println("0\t스위트룸\t50,000\t"+예약가능[4]);
+				System.out.println("1\t트윈룸\t10,000\t"+예약가능[0]);
+				System.out.println("2\t더블룸\t0,000\t"+예약가능[1]);
+				System.out.println("3\t바다뷰트윈룸\t30,000\t"+예약가능[2]);
+				System.out.println("4\t바다뷰더블룸\t40,000\t"+예약가능[3]);
+				System.out.println("5\t스위트룸\t50,000\t"+예약가능[4]);
 				
 		}
 				

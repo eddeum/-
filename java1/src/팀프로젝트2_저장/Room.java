@@ -9,15 +9,22 @@ public class Room {
 	private String rprice;
 	private boolean reserve;
 	private String name;
-	private java.util.Date date;
+	private String date;
 	
 	// »ý¼ºÀÚ
 	public Room() {}
 
-	public Room(String rname, String rprice, boolean reserve, String name, java.util.Date date) {
+	public Room(String rname, String rprice, boolean reserve, String name, String date) {
 		super();
 		this.rname = rname;
 		this.rprice = rprice;
+		this.reserve = reserve;
+		this.name = name;
+		this.date = date;
+	}
+
+	public Room(boolean reserve, String name, String date) {
+		super();
 		this.reserve = reserve;
 		this.name = name;
 		this.date = date;
@@ -56,13 +63,16 @@ public class Room {
 		this.name = name;
 	}
 
-	public java.util.Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(java.util.Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
+
+
+	
 
 
 

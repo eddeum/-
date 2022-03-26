@@ -44,43 +44,32 @@ public class 호텔예매 {
 					} // if e
 				} // for e
 				
-
-
-				for(int i = 0; i<예약가능.length; i++) {
-					if(예약가능[i]==true) {
-						String 예약가능여부 = "예약불가";
-					} // if e
-					else {
-						String 예약가능여부 = "예약가능";
-					} // else e
-				} // for e
 				
-				
-				
+	
 				System.out.println("********* 방 예약 현황표 *********");
 				System.out.println("번호\t방이름\t\t금액\t예약여부");
-				System.out.println("1"+".\t"+"트윈룸\t\t"+"10,000원\t"+예약가능[0]);
+				System.out.println("1"+".\t"+"트윈룸\t\t"+"10,000원\t"+((예약가능[0])?"예약불가":"예약가능"));
 				System.out.println("2"+".\t"+"더블룸\t\t"+"20,000원\t"+예약가능[1]);
 				System.out.println("3"+".\t"+"바다뷰트윈룸\t"+"30,000원\t"+예약가능[2]);
 				System.out.println("4"+".\t"+"바다뷰더블룸\t"+"40,000원\t"+예약가능[3]);
 				System.out.println("5"+".\t"+"스위트룸\t\t"+"50,000원\t"+예약가능[4]);
 				
-//				int ch = scanner.nextInt();
-//				
-//				Controller.예약(날짜,ch);
-//				
-//				if(ch==1) {}
-//				else if(ch==2) {}
-//				else if (ch==3) {}
-//				else if(ch==4) {}
-//				else if(ch==5) {}
-//				else {
-//					System.out.println("알림))방 번호를 잘못입력하였습니다.");
-//				} // else e
-//				
-//			} // if e
-//			else {
-//				System.out.println("알림))날짜를 잘못입력하였습니다.");
+				int ch = scanner.nextInt();
+				
+				Controller.예약(날짜,ch);
+				
+				if(ch==1) {}
+				else if(ch==2) {}
+				else if (ch==3) {}
+				else if(ch==4) {}
+				else if(ch==5) {}
+				else {
+					System.out.println("알림))방 번호를 잘못입력하였습니다.");
+				} // else e
+				
+			} // if e
+			else {
+				System.out.println("알림))날짜를 잘못입력하였습니다.");
 			}
 			
 			

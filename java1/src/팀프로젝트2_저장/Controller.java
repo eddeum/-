@@ -22,27 +22,7 @@ public class Controller {
 	} // 날짜체크 e
 	public static void 예약(String 날짜) {
 		
-		boolean[] 예약가능 = new boolean[5];
-		for(Room temp : roomlist) { // roomlist에 있는 리스트를 temp에 대입하여
-			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMdd"); // 날짜를 MM(월)dd(일)의 String 형식의 객체생성
-			if(simpleDateFormat.format(temp.getDate()).equals(날짜)) { // temp안의 날짜와 입력받은 날짜가 동일하고
-				if(temp.getRname().equals("트윈룸")) { // temp안의 방이름이 트윈룸과 동일하면
-					예약가능[0] = true;
-				} // if e
-				if(temp.getRname().equals("더블룸")) {
-					예약가능[1] = true;
-				} // if e
-				if(temp.getRname().equals("바다뷰트윈룸")) {
-					예약가능[2] = true;
-				} // if e
-				if(temp.getRname().equals("바다뷰더블룸")) {
-					예약가능[3] = true;
-				} // if e
-				if(temp.getRname().equals("스위트룸")) {
-					예약가능[4] = true;
-				} // if e
-				
-			} // if e
+
 			
 		} // for e
 		

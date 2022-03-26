@@ -1,14 +1,13 @@
 package 팀프로젝트2_저장;
 
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import ddeum.Room;
-
 public class Controller {
 	
-	public static ArrayList<Room> roomlist = new ArrayList<>();
+	
 	
 	public static boolean 날짜체크(String 날짜) {
 		Calendar calendar = Calendar.getInstance(); // 입력받은 월의 마지막 일을 구하기 위함

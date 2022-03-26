@@ -14,9 +14,6 @@ public class Room {
 	
 	// »ý¼ºÀÚ
 	public Room() {}
-	
-	
-	
 
 	public Room(String rname, String rprice, boolean reserve, String name, Date date) {
 		super();

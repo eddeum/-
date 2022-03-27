@@ -40,8 +40,8 @@ public class Controller {
 		for(int i = 0; i<호텔예매.roomlist.length; i++) {
 			if(호텔예매.roomlist[i]==null) {
 					if(ch==1) {
-							호텔예매.roomlist[i]=room1;
-							return 1;
+						호텔예매.roomlist[i]=room1;
+						return 1;
 					} // if e
 					else if(ch==2) {
 						호텔예매.roomlist[i]=room2;
@@ -66,8 +66,21 @@ public class Controller {
 	return 6;
 	} // 예약 e
 
-	public static void 결제() {
+	public static int 결제(int 금액) {
+		for(Room temp : 호텔예매.roomlist) {
+			if(temp.getRname().equals("트윈룸")) {
+				if(금액<10000) {
+					return 1;
+				}
+				else {
+					return 2;
+				} // else e
+			} // if e
+			else if(temp.getRname().equals("더블룸")) {
+				
+			} // else if
+		} // for e
 		
-	
+	return 10;
 	} // 결제 e
 }

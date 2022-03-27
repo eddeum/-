@@ -56,7 +56,7 @@ public class 호텔예매 {
 			
 						System.out.println("************** 방 예약 현황표 **************");
 						System.out.println("번호\t방이름\t\t금액\t\t예약여부");
-						System.out.println("1"+".\t"+"트윈룸\t\t"+"10,000원\t\t"+((예약가능[0])?"예약불가":"예약가능"));
+						System.out.println("1"+".\t"+"트윈룸\t\t"+"10,000원\t\t"+((예약가능[0])?"예약불가":"예약가능")); // 조건연산자[조건식? 참 : 거짓]
 						System.out.println("2"+".\t"+"더블룸\t\t"+"20,000원\t\t"+((예약가능[1])?"예약불가":"예약가능"));
 						System.out.println("3"+".\t"+"바다뷰트윈룸\t"+"30,000원\t\t"+((예약가능[2])?"예약불가":"예약가능"));
 						System.out.println("4"+".\t"+"바다뷰더블룸\t"+"40,000원\t\t"+((예약가능[3])?"예약불가":"예약가능"));
@@ -72,12 +72,9 @@ public class 호텔예매 {
 							
 							System.out.println("1번방 트윈룸이 예약되었습니다.");
 							System.out.println("객실금액은 10,000원입니다.");
-							System.out.println("금액입력 : "); int 금액 = scanner.nextInt();
-							
-							Controller.결제(금액);
+
 							
 						} // if e
-						
 						if(result2==2) {
 							System.out.println("2번방 더블룸이 예약되었습니다.");
 						} // if e
@@ -93,6 +90,18 @@ public class 호텔예매 {
 						if(result2==6) {
 							System.out.println("알림))예약할 수 없습니다.");
 						}
+						
+//						System.out.println("금액입력 : "); int 금액 = scanner.nextInt();
+//						int result3 = Controller.결제(금액);
+//						
+//						if(result3==1) {
+//							System.out.println("금액이 부족합니다.");
+//						}
+//						else if(result3==2) {
+//							System.out.println("결제가 완료되었습니다.");
+//						}
+						
+						
 						
 						for(Room temp1 : roomlist) {
 							if(temp1 != null) {

@@ -7,14 +7,14 @@ public class Room {
 	// 필드
 	private String rname;
 	private String rprice;
-	private boolean reserve;
+	private String reserve;
 	private String name;
 	private String date;
 	
 	// 생성자
 	public Room() {}
 
-	public Room(String rname, String rprice, boolean reserve, String name, String date) {
+	public Room(String rname, String rprice, String reserve, String name, String date) {
 		super();
 		this.rname = rname;
 		this.rprice = rprice;
@@ -23,13 +23,13 @@ public class Room {
 		this.date = date;
 	}
 
-	public Room(boolean reserve, String name, String date) {
+	public Room(String reserve, String name, String date) {
 		super();
 		this.reserve = reserve;
 		this.name = name;
 		this.date = date;
 	}
-
+	
 	// 메소드
 	public String getRname() {
 		return rname;
@@ -47,11 +47,11 @@ public class Room {
 		this.rprice = rprice;
 	}
 
-	public boolean isReserve() {
+	public String getReserve() {
 		return reserve;
 	}
 
-	public void setReserve(boolean reserve) {
+	public void setReserve(String reserve) {
 		this.reserve = reserve;
 	}
 
@@ -70,11 +70,6 @@ public class Room {
 	public void setDate(String date) {
 		this.date = date;
 	}
-
-
-	
-
-
 
 	
 

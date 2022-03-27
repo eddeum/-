@@ -21,27 +21,30 @@ public class Controller {
 		return false;
 	} // 날짜체크 e
 	
-	public static boolean 예약(String 날짜, String name, int ch) {
+	public static int 예약(String 날짜, String name, int ch) {
 		
-		Room room = new Room(true, name, 날짜);
+		Room room1 = new Room("트윈룸", "10,000원","예약불가", name, 날짜);
+		Room room2 = new Room("더블룸", "20,000원","예약불가", name, 날짜);
+		Room room3 = new Room("바다뷰트윈룸", "30,000원","예약불가", name, 날짜);
+		Room room4 = new Room("바다뷰더블룸", "40,000원","예약불가", name, 날짜);
+		Room room5 = new Room("스위트룸", "50,000원","예약불가", name, 날짜);
 		
-		for(int i = 0; i<호텔예매.roomlist.size(); i++) {
-//			if(호텔예매.roomlist.get(i).getRname()==null) {
-			if(ch==1) {
-				호텔예매.roomlist.get(i).setRname("트윈룸");
-				호텔예매.roomlist.add(i, room);
-				return true;
+		for(int i = 0; i<호텔예매.roomlist.length; i++) {
+			if(호텔예매.roomlist[i]==null) {
+				
+					if(ch==1) {
+					호텔예매.roomlist[i]=room1;
+					return 1;
+					}
+					else if(ch==2) {
+						호텔예매.roomlist[i]=room2;
+						return 2;
+					}
+				
+				
 			} // if e
-			if(ch==2) {
-				호텔예매.roomlist.get(i).setRname("더블룸");
-				호텔예매.roomlist.add(i, room);
-				return true;
-			}
-//			}
-		} // for e
-	
-		return false;
-	
+		} // for e	
+	return 3;
 	} // 예약 e
 
 	

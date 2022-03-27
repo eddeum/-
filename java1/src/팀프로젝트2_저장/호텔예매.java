@@ -7,14 +7,17 @@ import java.util.Scanner;
 
 public class 호텔예매 {
 	
-	public static ArrayList<Room> roomlist = new ArrayList<>();
+//	public static ArrayList<Room> roomlist = new ArrayList<>();
+	public static Room[] roomlist = new Room[100];
 	
 	public static void main(String[] args) {
 		
 		Scanner scanner = new Scanner(System.in);
 		
 		
-		roomlist.add(new Room("더블룸", "20,000원", true, "유재석", "0326"));
+//		roomlist.add(new Room("더블룸", "20,000원", "예약불가", "유재석", "0326"));
+//		roomlist[1] = new Room("더블룸", "20,000원", "예약불가", "유재석", "0326");
+		
 		
 		while(true) {
 			try {
@@ -22,10 +25,14 @@ public class 호텔예매 {
 				System.out.println("날짜입력(mmdd) :");	String 날짜 = scanner.next();
 				
 				boolean result = Controller.날짜체크(날짜);
+				
 				if(result==true) {
+					
+					
 					
 					boolean[] 예약가능 = new boolean[5];
 					for(Room temp : roomlist) {
+						if(temp != null) {
 					 // 날짜를 MM(월)dd(일)의 String 형식의 객체생성
 						if(temp.getDate().equals(날짜)) { // temp안의 날짜와 입력받은 날짜가 동일하고
 							if(temp.getRname().equals("트윈룸")) { // temp안의 방이름이 트윈룸과 동일하면
@@ -43,7 +50,7 @@ public class 호텔예매 {
 							if(temp.getRname().equals("스위트룸")) {
 								예약가능[4] = true;
 							} // if e
-							
+						}	
 						} // if e
 					} // for e
 					
@@ -59,28 +66,33 @@ public class 호텔예매 {
 					
 					System.out.println("방 번호 선택 : ");	int ch = scanner.nextInt();
 					System.out.println("예약자 이름 : ");	String name = scanner.next();
-					
-					boolean result2 = Controller.예약(날짜, name, ch);
-					
+				
+					int result2 = Controller.예약(날짜, name, ch);
 					
 						
-					if(ch==1) {
+					if(result2==1) {
 						
 						System.out.println("1번방 트윈룸이 예약되었습니다.");
 						
 					} // if e
-					else if(ch==2) {
+					if(result2==2) {
 						
 						System.out.println("2번방 더블룸이 예약되었습니다.");
 					}
-					else if (ch==3) {}
-					else if(ch==4) {}
-					else if(ch==5) {}
-					else {
-						System.out.println("알림))방 번호를 잘못입력하였습니다.");
-					} // else e
-							
-						
+//					else if (ch==3) {}
+//					else if(ch==4) {}
+//					else if(ch==5) {}
+//					else {
+//						System.out.println("알림))방 번호를 잘못입력하였습니다.");
+//					} // else e
+					
+					
+					for(Room temp1 : roomlist) {
+						if(temp1 != null) {
+							System.out.println(temp1.getRname()+"\t"+temp1.getReserve()+"\t"+temp1.getDate());
+						} // if e
+				
+					} // for e
 					
 				} // if e
 				else {
@@ -89,7 +101,7 @@ public class 호텔예매 {
 				
 			}catch(Exception e) {
 				System.out.println("알림))오류입니다(관리자에게문의)");
-			}
+			} // catch e
 		} // while e
 		
 	} // me

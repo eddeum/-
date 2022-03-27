@@ -21,6 +21,14 @@ public class Controller {
 		return false;
 	} // 날짜체크 e
 	
+	public static void 예약목록() {
+		for(Room temp : 호텔예매.roomlist) {
+			if(temp != null) {
+				System.out.println(temp.getDate()+"\t"+temp.getRname()+"\t\t"+temp.getName());
+			} // if e
+		} // for e
+	} // 예약목록 e
+
 	public static int 예약(String 날짜, String name, int ch) {
 		
 		Room room1 = new Room("트윈룸", "10,000원","예약불가", name, 날짜);
@@ -31,22 +39,35 @@ public class Controller {
 		
 		for(int i = 0; i<호텔예매.roomlist.length; i++) {
 			if(호텔예매.roomlist[i]==null) {
-				
 					if(ch==1) {
-					호텔예매.roomlist[i]=room1;
-					return 1;
-					}
+							호텔예매.roomlist[i]=room1;
+							return 1;
+					} // if e
 					else if(ch==2) {
 						호텔예매.roomlist[i]=room2;
 						return 2;
-					}
+					} // else if e
+					else if(ch==3) {
+						호텔예매.roomlist[i]=room3;
+						return 3;
+					} // else if e
+					else if(ch==4) {
+						호텔예매.roomlist[i]=room4;
+						return 4;
+					} // else if e
+					else if(ch==5) {
+						호텔예매.roomlist[i]=room5;
+						return 5;
+					} // else if e
 				
-				
+			
 			} // if e
 		} // for e	
-	return 3;
+	return 6;
 	} // 예약 e
 
+	public static void 결제() {
+		
 	
-
+	} // 결제 e
 }

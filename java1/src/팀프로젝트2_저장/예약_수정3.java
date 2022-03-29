@@ -6,7 +6,7 @@ import java.util.Scanner;
 import ddeum.Room;
 
 
-public class 예약 {
+public class 예약_수정3 {
 
 	public static Room[] roomlist = new Room[100];
 	
@@ -24,10 +24,10 @@ public class 예약 {
 	} // 날짜체크 e
 
 /////////////////////////////////// 예약목록 /////////////////////////////////////////		
-	public static void 예약목록() {
+	public static void 예약목록() { //////////////////////////////////////////////////////////////////////////////// 예약목록 문자열길이 수정
 		for(Room temp : roomlist) {
 			if(temp != null) {
-				System.out.printf("%3s\t%10s\t%7s\n",temp.getDate(),temp.getRname(),temp.getName());
+				System.out.printf("%3s\t%10s\t%7s\t%15s\n",temp.getDate(),temp.getRname(),temp.getName(),temp.get추가이용()); ///////////////////////////////////////////////////////수정(0329)
 			} // if e
 		} // for e
 	
@@ -38,7 +38,7 @@ public class 예약 {
 		public static void main(String[] args) {
 			
 	
-		Scanner scanner = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in); /////////////////////////////////////////// 확인용
 		
 		while(true) {
 			try {
@@ -93,7 +93,7 @@ public class 예약 {
 						Room room4 = new Room("바다뷰더블룸", "40,000원","예약불가", name, 날짜);
 						Room room5 = new Room("스위트룸", "50,000원","예약불가", name, 날짜);
 						
-						for(int i = 0; i<roomlist.length; i++) {
+						for(int i = 0; i<roomlist.length; i++) { ////////////////////////////////////////////////////////////////////////// 중복처리 수정
 							if(roomlist[i]==null) {
 									if(ch2==1) {	
 										if(예약가능[ch2-1]) {
@@ -103,6 +103,8 @@ public class 예약 {
 										else {
 											roomlist[i]=room1;
 											System.out.println("1번방 트윈룸이 예약되었습니다.");
+											추가시설(i);
+											결제(i);
 											break;
 										} // else e
 									} // if e
@@ -114,6 +116,8 @@ public class 예약 {
 										else {
 											roomlist[i]=room2;
 											System.out.println("2번방 더블룸이 예약되었습니다.");
+											추가시설(i);
+											결제(i);
 											break;
 										} // else e
 									} // else if e
@@ -125,6 +129,8 @@ public class 예약 {
 										else {
 											roomlist[i]=room3;
 											System.out.println("3번방 바다뷰트윈룸이 예약되었습니다.");
+											추가시설(i);
+											결제(i);
 											break;
 										} // else e
 									} // else if e
@@ -136,6 +142,8 @@ public class 예약 {
 										else {
 											roomlist[i]=room4;
 											System.out.println("4번방 바다뷰더블룸이 예약되었습니다.");
+											추가시설(i);
+											결제(i);
 											break;
 										} // else e
 									} // else if e
@@ -147,6 +155,8 @@ public class 예약 {
 										else {
 											roomlist[i]=room5;
 											System.out.println("5번방 스위트룸이 예약되었습니다.");
+											추가시설(i);
+											결제(i);
 											break;
 										} // else e
 									} // else if e
@@ -161,7 +171,7 @@ public class 예약 {
 
 				} // if e
 				else if(ch==2) {
-					System.out.printf("%3s\t%10s\t%7s\n","날짜","방이름","예약자");
+					System.out.printf("%3s\t%10s\t%7s\t%15s\n","날짜","방이름","예약자","추가이용시설");///////////////////////////////////////////////////////수정(0329)
 					예약목록();
 				} // else if e
 				
@@ -174,5 +184,115 @@ public class 예약 {
 
 	} // 예약 e
 		
+	public static void 추가시설( int i) {
+		
+		Scanner scanner = new Scanner(System.in); /////////////////////////////////////////// 확인용
+		
+		while(true) {
+			System.out.println();
+			System.out.print("추가 이용 시설을 선택해주세요.(각 1회만 선택이 가능합니다.)"
+					+ "\n1.조식뷔페(30,000)\n2.수영장(20,000)\n3.헬스장(10,000)\n4.결제 \n"); 
+			System.out.println("추가이용 시설 및 결제선택 : ");	int ch = scanner.nextInt();
+			
+				if(ch==1) { 
+					System.out.println("조식뷔페를 이용합니다.");
+					roomlist[i].get추가이용().add("조식뷔페");
+				} 
+				else if (ch==2) { 
+					System.out.println("수영장을 이용합니다.");
+					roomlist[i].get추가이용().add("수영장");
+				}
+				else if(ch==3) { 
+					System.out.println("헬스장을 이용합니다.");
+					roomlist[i].get추가이용().add("헬스장");
+				} 
+				else if(ch==4) {
+					break;
+				}
+				System.out.println();
+				System.out.println("** 추가이용시설 선택현황 **");
+				System.out.println(roomlist[i].get추가이용());
+		} // while e
+		
+	} // 추가시설 e
+	
+	public static void 결제(int i) { ///////////////////////////////////////////////////////추가(0329)
+		
+		
+		if(roomlist[i].getRname().equals("트윈룸")) {
+			int tprice = 10000;
+			if(roomlist[i].get추가이용().contains("조식뷔페")) {
+				tprice += 30000;
+			}
+			if(roomlist[i].get추가이용().contains("수영장")) {
+				tprice += 20000;
+			}
+			if(roomlist[i].get추가이용().contains("헬스장")) {
+				tprice += 10000;
+			}
+			System.out.println("결제하실 총 금액은 "+tprice+"원 입니다.");
+			System.out.println();
+		} // if e
+		
+		else if(roomlist[i].getRname().equals("더블룸")) {
+			int tprice = 20000;
+			if(roomlist[i].get추가이용().contains("조식뷔페")) {
+				tprice += 30000;
+			}
+			if(roomlist[i].get추가이용().contains("수영장")) {
+				tprice += 20000;
+			}
+			if(roomlist[i].get추가이용().contains("헬스장")) {
+				tprice += 10000;
+			}
+			System.out.println("결제하실 총 금액은 "+tprice+"원 입니다.");
+			System.out.println();
+		} // else if e
+		else if(roomlist[i].getRname().equals("바다뷰트윈룸")) {
+			int tprice = 30000;
+			if(roomlist[i].get추가이용().contains("조식뷔페")) {
+				tprice += 30000;
+			}
+			if(roomlist[i].get추가이용().contains("수영장")) {
+				tprice += 20000;
+			}
+			if(roomlist[i].get추가이용().contains("헬스장")) {
+				tprice += 10000;
+			}
+			System.out.println("결제하실 총 금액은 "+tprice+"원 입니다.");
+			System.out.println();
+		} // else if e
+		else if(roomlist[i].getRname().equals("바다뷰더블룸")) {
+			int tprice = 40000;
+			if(roomlist[i].get추가이용().contains("조식뷔페")) {
+				tprice += 30000;
+			}
+			if(roomlist[i].get추가이용().contains("수영장")) {
+				tprice += 20000;
+			}
+			if(roomlist[i].get추가이용().contains("헬스장")) {
+				tprice += 10000;
+			}
+			System.out.println("결제하실 총 금액은 "+tprice+"원 입니다.");
+			System.out.println();
+		} // else if e
+		else if(roomlist[i].getRname().equals("스위트룸")) {
+			int tprice = 50000;
+			if(roomlist[i].get추가이용().contains("조식뷔페")) {
+				tprice += 30000;
+			}
+			if(roomlist[i].get추가이용().contains("수영장")) {
+				tprice += 20000;
+			}
+			if(roomlist[i].get추가이용().contains("헬스장")) {
+				tprice += 10000;
+			}
+			System.out.println("결제하실 총 금액은 "+tprice+"원 입니다.");
+			System.out.println();
+		} // else if e
+		
+		
+	} // 결제 e
+
 	
 } // ce

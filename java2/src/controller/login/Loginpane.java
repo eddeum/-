@@ -3,6 +3,7 @@ package controller.login;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dao.MemberDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,7 +16,7 @@ public class Loginpane implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+		lblconfirm.setText(""); // 처음 실행시 문구 숨기기
 	}
 	
     @FXML
@@ -71,16 +72,20 @@ public class Loginpane implements Initializable {
     @FXML
     void login(ActionEvent event) {
     	
-    	String id = txtid.getText(); // 해당 fxid에 입력된 값 가져오기
-    	String password = txtpassword.getText(); // 해당 fxpassword에 입력된 값 가져오기
-
-    	if(id.equals("admin") && password.equals("1234")) {
-    		lblconfirm.setText("관라자 이군요");
+    	// 1. 컨트롤에 입력된 값 가져오기
+    	String id = txtid.getText();
+    	String password = txtpassword.getText();
+    	// 2. db객체내 메소드 호출
+    	boolean result = MemberDao.memberDao.login(id, password);
+    	// 3. 결과 확인
+    	if(result) {
+    		// 페이지 전환[다음시간]
+    		// * 테스트
+    		lblconfirm.setText("로그인성공");
     	}else {
-    		lblconfirm.setText("일반 회원 이군요");
-    	}
+    		lblconfirm.setText("동일한 회원정보가 없습니다.");
+    	} // else e
     	
-    	System.out.println("로그인 페이지로 이동");
     }
 
 	

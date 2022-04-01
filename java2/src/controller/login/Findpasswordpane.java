@@ -10,18 +10,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class Findid implements Initializable {
+public class Findpasswordpane implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+		lblconfirm.setText("");
 	}
 	
     @FXML
     private TextField txtemail;
 
     @FXML
-    private Button btnfindid;
+    private Button btnfindpassword;
 
     @FXML
     private Button btnback;
@@ -30,15 +30,18 @@ public class Findid implements Initializable {
     private Label lblconfirm;
 
     @FXML
-    void back(ActionEvent event) {
-    	System.out.println("아이디찾기에서 뒤로가기버튼 클릭");
-    	Login.get본인객체().loadpage("/view/login/loginpane.fxml");
+    private TextField txtid;
 
+    @FXML
+    void back(ActionEvent event) {
+    	System.out.println("비밀번호찾기에서 뒤로가기버튼 클릭");
+    	Login.get본인객체().loadpage("/view/login/loginpane.fxml");
     }
 
     @FXML
-    void findid(ActionEvent event) {
-    	System.out.println("아이디찾기 시도");
+    void findpassword(ActionEvent event) {
+    	System.out.println("비밀번호찾기 시도");
+
     }
 	
 }

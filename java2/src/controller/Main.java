@@ -11,6 +11,13 @@ import javafx.scene.layout.BorderPane;
 
 public class Main implements Initializable {
 				// Initializable : view가 새로 열렸을때 초기값 설정하는 메소드 제공
+	
+	public static Main instance;
+	public Main() {
+		instance = this;
+	}
+	
+	
     @FXML
     private BorderPane borderpane; // 씬빌더에서 만든 컨테이너 객체(fx:id)
 	

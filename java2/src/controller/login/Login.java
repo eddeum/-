@@ -3,6 +3,7 @@ package controller.login;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dto.Member;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,6 +30,13 @@ public class Login implements Initializable {
 	}
 	
 	// line 17~26 : Loginpane controller에서 회원가입페이지로 이동하기위함..
+	
+	
+	// * 로그인 성공한 회원객체
+	public static Member member;
+	
+	
+	
 
     @FXML
     private MediaView mediaview;

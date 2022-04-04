@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:controller="controller.home.Update" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="976.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" >
+   <children>
+      <Label layoutX="257.0" layoutY="125.0" prefHeight="82.0" prefWidth="268.0" text="회원정보 수정">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <Line endX="182.0" layoutX="358.0" layoutY="207.0" startX="-100.0" stroke="#fffeac" strokeWidth="5.0" />
+      <Label layoutX="256.0" layoutY="231.0" prefHeight="29.0" prefWidth="54.0" text="이메일">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="256.0" layoutY="307.0" prefHeight="29.0" prefWidth="54.0" text="주소">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtemail" layoutX="256.0" layoutY="262.0" prefHeight="38.0" prefWidth="287.0" />
+      <TextField fx:id="txtaddress" layoutX="256.0" layoutY="336.0" prefHeight="38.0" prefWidth="287.0" />
+      <Button fx:id="btnupdate" onAction="#update" layoutX="256.0" layoutY="416.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="287.0" style="-fx-background-color: #fffeac;" text="수정">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

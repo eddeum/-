@@ -12,6 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.util.Duration;
 
 public class Login implements Initializable {
 	
@@ -56,6 +57,15 @@ public class Login implements Initializable {
 		mediaview.setMediaPlayer(mediaPlayer);
 			// 4. 미디어플레이어 시작
 		mediaPlayer.play();
+		
+			// * 동영상 무한재생
+		mediaPlayer.setOnEndOfMedia(new Runnable() {
+			@Override
+			public void run() { // 멀티 스레드
+				mediaPlayer.seek(Duration.ZERO);
+				// 미디어의 현재 위치를 처음으로 돌리기
+			}
+		});
 		
 		loadpage("/view/login/loginpane.fxml");
 	}

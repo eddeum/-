@@ -36,7 +36,7 @@
             <Line endX="-22.0" layoutX="134.0" layoutY="420.0" startX="-100.0" strokeWidth="5.0" />
             <Label layoutX="213.0" layoutY="352.0" prefHeight="25.0" prefWidth="60.0" text="생활용품" />
             <Label layoutX="32.0" layoutY="426.0" prefHeight="25.0" prefWidth="60.0" text="거래후기" />
-            <Label layoutX="92.0" layoutY="426.0" prefHeight="25.0" prefWidth="60.0" text="자유게시" />
+            <Label fx:id="lblboard" onMouseClicked="#accboard" layoutX="92.0" layoutY="426.0" prefHeight="25.0" prefWidth="60.0" text="자유게시" />
             <Label layoutX="37.0" layoutY="463.0" prefHeight="25.0" prefWidth="156.0" text="정보" />
             <Line endX="-22.0" layoutX="134.0" layoutY="493.0" startX="-100.0" strokeWidth="5.0" />
             <Label layoutX="32.0" layoutY="499.0" prefHeight="25.0" prefWidth="60.0" text="내가쓴글" />

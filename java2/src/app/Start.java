@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class Start extends Application {
@@ -28,6 +29,13 @@ public class Start extends Application {
 					// 생략[src폴더부터] /img/파일명.확장자 
 			
 		stage.getIcons().add(image); // 3. 스테이지 아이콘 설정 
+		
+		// * 외부폰트 설정
+			// 1. 폰트 로드
+			Font.loadFont(getClass().getResourceAsStream("SANGJU Gotgam.ttf"), 14); // 해당 폰트의 컴퓨터 이름이 정확하지 않아 안되는것 같아요... 다른 폰트는 되니까... 해보시고 저도 저 폰트의 컴퓨터이름을 확인해봃게요~~넹
+			// 2. 현재 scene에 외부 스타일시트 적용
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			
 		stage.setResizable(false);	// 4. 스테이지 크기 변경 불가
 		stage.setTitle("이젠마켓"); // 2. 스테이지 창 이름
 		stage.show(); // 1. 스테이지 열기

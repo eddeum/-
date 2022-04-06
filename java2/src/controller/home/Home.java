@@ -63,7 +63,7 @@ public class Home implements Initializable {
 		try {
 			Parent parent = FXMLLoader.load(getClass().getResource(page));
 			borderpane.setCenter(parent);
-		}catch(Exception e) {}
+		}catch(Exception e) { System.out.println( e );}
 		
 	}
 	

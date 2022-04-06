@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="976.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.product.Productadd">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="976.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.product.Productupdate">
    <children>
       <Label layoutX="16.0" layoutY="14.0" prefHeight="82.0" prefWidth="268.0" text="중고 제품">
          <font>
@@ -18,10 +18,10 @@
          </font>
       </Label>
       <Line endX="132.0" layoutX="117.0" layoutY="96.0" startX="-100.0" stroke="#fffeac" strokeWidth="5.0" />
-      <Button fx:id="btnadd" layoutX="488.0" layoutY="556.0" mnemonicParsing="false" onAction="#add" prefHeight="45.0" prefWidth="397.0" style="-fx-background-color: #fffeac;" text="제품 등록" />
+      <Button fx:id="btnupdate" layoutX="488.0" layoutY="556.0" mnemonicParsing="false" onAction="#update" prefHeight="45.0" prefWidth="397.0" style="-fx-background-color: #fffeac;" text="제품 수정" />
       <TextField fx:id="txtpname" layoutX="32.0" layoutY="212.0" prefHeight="45.0" prefWidth="397.0" promptText="제품명" />
       <TextField fx:id="txtpcontent" alignment="TOP_LEFT" layoutX="32.0" layoutY="287.0" prefHeight="243.0" prefWidth="397.0" promptText="제품설명" />
-      <Button fx:id="btnimg" layoutX="488.0" layoutY="212.0" mnemonicParsing="false" onAction="#imgadd" prefHeight="45.0" prefWidth="397.0" style="-fx-background-color: #fffeac;" text="이미지 등록" />
+      <Button fx:id="btnimg" layoutX="488.0" layoutY="212.0" mnemonicParsing="false" onAction="#imgadd" prefHeight="45.0" prefWidth="397.0" style="-fx-background-color: #fffeac;" text="이미지 변경" />
       <TextField fx:id="txtpprice" layoutX="32.0" layoutY="557.0" prefHeight="45.0" prefWidth="397.0" promptText="가격" />
       <RadioButton fx:id="opt1" layoutX="36.0" layoutY="626.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="92.0" text="남성의류">
          <toggleGroup>

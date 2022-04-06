@@ -40,6 +40,8 @@ public class Home implements Initializable {
 	private Label lblupdate;
 	@FXML
 	private Label lblboard;
+	@FXML
+	private Label lblproduct;
 	
 	@FXML
 	private BorderPane borderpane;
@@ -52,6 +54,10 @@ public class Home implements Initializable {
 	
 	@FXML // 자유게시 레이블을 클릭했을때 이벤트
 	public void accboard(MouseEvent e) {loadpage("/view/board/board.fxml");}
+	
+	@FXML // 남성의류 레이블을 클릭했을때 이벤트
+	public void accproduct(MouseEvent e) {loadpage("/view/product/product.fxml");}
+	
 	
 	public void loadpage(String page) {
 		try {

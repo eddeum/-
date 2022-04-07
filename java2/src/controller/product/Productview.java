@@ -55,6 +55,35 @@ public class Productview implements Initializable{
 
 	    @FXML
 	    private Label txtmid;
+	    
+
+	    @FXML
+	    private Button btnactivation;
+
+	    @FXML
+	    void activation(ActionEvent event) {
+	    		// 컨트롤의 값 변경
+	    	if(btnactivation.getText().equals("거래중")) {
+	    		txtpactivation.setText("상태 : 거래중"); btnactivation.setText("판매완료");
+	    		// DB 값 변경
+	    		ProductDao.productDao.activation(Productcontrol.select.getPnum() );
+	    		// 선택된 제품의 상태 변경
+	    		Productcontrol.select.setPactivation(2);
+	    		return;
+	    	} // if e
+	    	if(btnactivation.getText().equals("판매완료")) {
+	    		txtpactivation.setText("상태 : 판매완료"); btnactivation.setText("판매중");
+	    		ProductDao.productDao.activation(Productcontrol.select.getPnum() );
+	    		Productcontrol.select.setPactivation(3);
+	    		return;
+	    	} // if e
+	    	if(btnactivation.getText().equals("판매중")) {
+	    		txtpactivation.setText("상태 : 판매중"); btnactivation.setText("거래중");
+	    		ProductDao.productDao.activation(Productcontrol.select.getPnum() );
+	    		Productcontrol.select.setPactivation(1);
+	    		return;
+	    	} // if e
+	    }
 
 	    @FXML
 	    void back(ActionEvent event) {
@@ -78,7 +107,7 @@ public class Productview implements Initializable{
 	    	Home.home.loadpage("/view/product/productupdate.fxml");
 	    }
 	
-	
+	    
 	
 	
 	
@@ -94,9 +123,15 @@ public class Productview implements Initializable{
 			// * 천단위 쉼표
 			DecimalFormat decimalFormat = new DecimalFormat("가격 : #,##0원");
 		txtpprice.setText(decimalFormat.format(product.getPprice()));
-		if(product.getPactivation() == 1) {txtpactivation.setText("상태 : 판매중");}
-		if(product.getPactivation() == 2) {txtpactivation.setText("상태 : 거래중");}
-		if(product.getPactivation() == 3) {txtpactivation.setText("상태 : 판매완료");}
+		if(product.getPactivation() == 1) {
+			txtpactivation.setText("상태 : 판매중"); btnactivation.setText("거래중");
+		} // if e
+		if(product.getPactivation() == 2) {
+			txtpactivation.setText("상태 : 거래중"); btnactivation.setText("판매완료");
+		} // if e
+		if(product.getPactivation() == 3) {
+			txtpactivation.setText("상태 : 판매완료"); btnactivation.setText("판매중");
+		} // if e
 		txtpdate.setText("제품 등록일 : " + product.getPdate());
 		// * 회원번호를 이용한 회원id 찾기[DAO에서 메소드 이용]
 		txtmid.setText("제품 등록회원 : " + MemberDao.memberDao.getmid(product.getMnum() ) );

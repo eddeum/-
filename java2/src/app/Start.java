@@ -1,9 +1,13 @@
 package app;
 
+import controller.Chatting;
+import controller.login.Login;
+import dao.RoomDao;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -35,6 +39,24 @@ public class Start extends Application {
 			Font.loadFont(getClass().getResourceAsStream("SANGJU Gotgam.ttf"), 14); // 해당 폰트의 컴퓨터 이름이 정확하지 않아 안되는것 같아요... 다른 폰트는 되니까... 해보시고 저도 저 폰트의 컴퓨터이름을 확인해봃게요~~넹
 			// 2. 현재 scene에 외부 스타일시트 적용
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			
+		// * stage(윈도우창)에 X버튼을 눌렀을때 이벤트
+			stage.setOnCloseRequest(e -> {
+				// 만약에 로그인이 되어있으면
+				if(Login.member != null) {
+					// 2. 방 삭제
+					if(Chatting.selectroom != null) { // 만약에 방에 접속되어 있는 상태이면
+					// 1. 방 접속명단 삭제
+						RoomDao.roomDao.roomlivedelete(Login.member.getMid() );
+						RoomDao.roomDao.roomdelete(Chatting.selectroom.getRonum() );
+					} // if e
+					// 3. 선택 방 초기화
+					Chatting.selectroom = null;
+				} // if e
+			});
+			
+			
+			
 			
 		stage.setResizable(false);	// 4. 스테이지 크기 변경 불가
 		stage.setTitle("이젠마켓"); // 2. 스테이지 창 이름

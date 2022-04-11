@@ -48,6 +48,9 @@ public class Home implements Initializable {
 	private Label lblproduct3;
 	@FXML
 	private Label lblproduct4;
+	@FXML
+	private Label lblrecord;	
+	
 	
 	@FXML
 	private BorderPane borderpane;
@@ -82,6 +85,10 @@ public class Home implements Initializable {
 	public void accproduct4(MouseEvent e) {
 		loadpage("/view/product/product.fxml");  category = "생활용품";
 	}
+	
+	@FXML // 통계 레이블을 클릭했을때 이벤트
+	public void accrecord(MouseEvent e) {loadpage("/view/record.fxml");}
+	
 	
 	
 	public void loadpage(String page) {

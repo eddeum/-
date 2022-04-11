@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="976.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Record">
+   <children>
+      <Label layoutX="24.0" layoutY="14.0" prefHeight="82.0" prefWidth="327.0" text="통계">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <Line endX="255.0" layoutX="125.0" layoutY="96.0" startX="-100.0" stroke="#fffeac" strokeWidth="5.0" />
+      <Accordion layoutX="65.0" layoutY="296.0" prefHeight="385.0" prefWidth="858.0">
+        <panes>
+          <TitledPane animated="false" prefHeight="204.0" prefWidth="0.0" text="회원 추세">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="471.0">
+                     <children>
+                        <BarChart fx:id="mbc" layoutX="158.0" layoutY="21.0" prefHeight="283.0" prefWidth="684.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                        <Label layoutX="37.0" layoutY="21.0" prefHeight="44.0" prefWidth="108.0" text="회원수">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Line endX="-49.0" layoutX="139.0" layoutY="65.0" startX="-100.0" stroke="#fffeac" strokeWidth="5.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+          <TitledPane animated="false" text="제품 추세">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BarChart fx:id="pbc" layoutX="455.0" layoutY="21.0" prefHeight="283.0" prefWidth="379.0">
+                           <xAxis>
+                              <CategoryAxis side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis side="LEFT" />
+                           </yAxis>
+                        </BarChart>
+                        <Label layoutX="27.0" layoutY="21.0" prefHeight="44.0" prefWidth="108.0" text="제품수">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Line endX="-49.0" layoutX="129.0" layoutY="65.0" startX="-100.0" stroke="#fffeac" strokeWidth="5.0" />
+                        <PieChart fx:id="ppc" layoutX="99.0" layoutY="28.0" prefHeight="270.0" prefWidth="350.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+          <TitledPane animated="false" text="게시판 추세">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BarChart fx:id="bbc" layoutX="150.0" layoutY="21.0" prefHeight="283.0" prefWidth="684.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+        </panes>
+      </Accordion>
+      <Label layoutX="83.0" layoutY="96.0" prefHeight="82.0" prefWidth="78.0" text="회원 수">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Line endX="-37.0" layoutX="184.0" layoutY="162.0" startX="-100.0" stroke="#fffeac" strokeWidth="5.0" />
+      <Label layoutX="395.0" layoutY="96.0" prefHeight="82.0" prefWidth="78.0" text="제품 수">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Line endX="-37.0" layoutX="496.0" layoutY="162.0" startX="-100.0" stroke="#fffeac" strokeWidth="5.0" />
+      <Label layoutX="710.0" layoutY="96.0" prefHeight="82.0" prefWidth="78.0" text="게시판 수">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Line endX="-16.0" layoutX="811.0" layoutY="162.0" startX="-100.0" stroke="#fffeac" strokeWidth="5.0" />
+      <Label fx:id="lblmtotal" layoutX="90.0" layoutY="165.0" prefHeight="82.0" prefWidth="78.0" text="13">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblptotal" layoutX="409.0" layoutY="165.0" prefHeight="82.0" prefWidth="78.0" text="13" textAlignment="JUSTIFY">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblbtotal" layoutX="730.0" layoutY="165.0" prefHeight="82.0" prefWidth="78.0" text="13" textAlignment="JUSTIFY">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

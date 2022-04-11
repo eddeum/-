@@ -53,8 +53,11 @@ public class ProductDao {
 		ArrayList<Product> productlist = new ArrayList<>();
 		try {
 			String sql = null;
-			// 검색이 없을경우
-			if(search==null) {
+			if(category == null && search == null) { // 모든 제품 빼오기
+				sql = "select * from product";
+				ps = conn.prepareStatement(sql);
+			} // if e
+			else if(search==null) { // 검색이 없을경우
 				sql = "select * from product where pcategory =? order by pnum desc";			// SQL 작성
 				ps = conn.prepareStatement(sql);				// SQL 연결
 				ps.setString(1, category);

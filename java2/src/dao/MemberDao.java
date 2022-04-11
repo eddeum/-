@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.mysql.cj.exceptions.ExceptionInterceptorChain;
 
@@ -205,6 +207,60 @@ public class MemberDao { // DB 접근객체
 			}
 		}catch(Exception e) {System.out.println("[SQL 오류]"+e);}
 		return null;
-	}
+	} // getmid end
+	
+		// 11. 카테고리별 개수
+	public Map<String, Integer> countcategory() {
+		Map<String, Integer> map = new HashMap<>();
+		String sql = "select pcategory, count(*) from product group by pcategory";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				map.put(rs.getString(1), rs.getInt(2) ); 
+			} // while e
+			return map;
+		}catch(Exception e) {System.out.println("[SQL 오류]"+e);}
+		return null;
+	} // countcategory end
+	
+		// 9. 전체 (인수 : 테이블명) 개수 반환
+	public int counttotal(String tname) {
+		String sql = "select count(*) from "+ tname;
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+				// 조회 결과의 첫번째 필드를 반환
+			} // if e
+		}catch(Exception e) {System.out.println("[SQL 오류]"+e);}
+		return 0;
+	} // counttotal end
+	
+		// 10. 날짜별로 (인수 : 테이블명, 필드명) 레코드 전체 개수 반환
+	public Map<String, Integer> datetotal(String tname, String date){
+		Map<String, Integer> map = new HashMap<>();
+		String sql = "select substring_index("+date+", ' ', 1), count(*)"
+				+ "from " + tname
+				+ " group by substring_index("+date+",' ', 1)";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				map.put(rs.getString(1), rs.getInt(2) );
+				// 결과의 해당 레코드의 첫번째필드[날짜], 두번째필드[가입자수]
+			} // while e
+			return map;
+		}catch(Exception e) {System.out.println("[SQL 오류]"+e);}
+		return null;
+	} // datetotal end
+	
+
+	
+
+
+	
+	
 
 }

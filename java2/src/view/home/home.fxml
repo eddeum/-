@@ -45,7 +45,7 @@
             <Label fx:id="lbldelete" onMouseClicked="#delete" layoutX="213.0" layoutY="499.0" prefHeight="25.0" prefWidth="60.0" text="회원탈퇴" />
             <Label layoutX="34.0" layoutY="536.0" prefHeight="25.0" prefWidth="156.0" text="관리자" />
             <Line endX="-22.0" layoutX="134.0" layoutY="567.0" startX="-100.0" strokeWidth="5.0" />
-            <Label layoutX="35.0" layoutY="573.0" prefHeight="25.0" prefWidth="60.0" text="통계" />
+            <Label fx:id="lblrecord" onMouseClicked="#accrecord" layoutX="35.0" layoutY="573.0" prefHeight="25.0" prefWidth="60.0" text="통계" />
          </children>
       </AnchorPane>
    </left>

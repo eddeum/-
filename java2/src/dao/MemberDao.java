@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -255,6 +257,24 @@ public class MemberDao { // DB 접근객체
 		}catch(Exception e) {System.out.println("[SQL 오류]"+e);}
 		return null;
 	} // datetotal end
+	
+	
+//	 	// 과제1. 로그인시 하루에 한번씩 포인트10 증정
+//	public void point(String id) {
+//		Date date = new Date();
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//		String pdate = sdf.format(date);
+//		String sql = "select mid from member where =pdate";
+//		try {
+//			ps = con.prepareStatement(sql);
+//			rs = ps.executeQuery();
+//			if(rs.next()) { 
+//				String
+//			}else {
+//				
+//			} // else e
+//		}catch(Exception e) {System.out.println("[SQL 오류]"+e);}
+//	}
 	
 
 	

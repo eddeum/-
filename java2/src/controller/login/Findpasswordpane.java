@@ -53,7 +53,7 @@ public class Findpasswordpane implements Initializable {
     	if(password != null) {
     		
     		// 이메일 전송 메소드 호출
-    		Member.sendmail(email, password);
+    		Member.sendmail(email, password); // 수정해야될부분
     		
     		
     		// 메시지

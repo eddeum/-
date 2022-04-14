@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+	<style type="text/css">
+	
+		/* 웹 폰트 = 눈누 홈페이지 */
+		@font-face {
+   			font-family: 'LeferiPoint-BlackA';
+    		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-BlackA.woff') format('woff');
+    		font-weight: normal;
+    		font-style: normal;
+			}
+		@font-face {
+    		font-family: 'beanpoleotM00';
+   			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/beanpoleotM00.woff') format('woff');
+    		font-weight: normal;
+    		font-style: normal;
+			}
+	
+		/* css 주석 */
+		/* 선택자{속석명} */
+		*{ /* 모든 태그에 적용 */
+			font-family: "궁서"; color: blue;
+		}
+		h3{ /* h3태그를 선택해서 꾸미기 */
+			font-family: LeferiPoint-BlackA;
+			text-decoration: overline line-through underline; 
+							/* 윗줄 */	/* 취소선 */	/* 밑줄 */
+			text-align: center; /*폰트 정렬*/
+			text-shadow: 3px 3px 5px orange; /* 폰트 그림자 */
+						/* x축 y축 깊이 색상 */
+		}
+		p{ /* p태그를 선택해서 꾸미기 */
+			font-family: beanpoleotM00;
+			background-color: yellow;	/* 배경색 */
+			line-height: 200%;			/* 줄간격[기본값 : 100%] */
+			font-size: 30px;			/* 폰트 크기 */
+			font-style:  italic;		/* 폰트 기울기 */
+			font-weight: bold;			/* 폰트 굵기 */
+			
+			letter-spacing: 2px;		/* 글자 간격[자간] */
+			word-spacing: 5px;			/* 단어 간격[어간] */
+		}
+		a{ /* a태그를 선택해서 꾸미기 */
+			text-decoration: none;	/* 밑줄 제거 */
+			color: black;
+		}
+		a:hover { /* a태그에 마우스를 올렸을때 */
+			color: orange;
+		}
+		a:visited { /* a태그에 클릭한 기록이 있으면 */
+			color: blue;
+		}
+		a:active { /* a태그 클릭했을때 */
+			color: green;
+		}
+	
+	</style>
+</head>
+<body>
+
+	<!-- 
+		선택자{ 속성명 = 값 }
+			1. font-family 	: 글꼴명
+			2. color 		: 글 색상
+			3. text-decoration
+				- overline 	: 윗줄
+				- underline : 밑줄
+				- line-through : 취소선
+			4. text-align 	: 텍스트 정렬
+				- center	: 가운데 정렬
+				- left		: 왼쪽 정렬
+				- right 	: 오른쪽 정렬
+			5. text-shadow	: x축 y축 깊이 색상 : 글꼴 그림자
+			6. line-height	: % : 줄 간격
+			7. letter-spacing	: 자간
+			8. word-spacing		: 어간
+			9. font-size	: 글자 크기
+			10. font-style	: italic	[글자 기울기]
+			11. font-weight	: bold		[글자 굵게]
+			12. a태그 이벤트 선택자
+				a:hover 	:	a태그에 마우스를 올렸을때 
+				a:active 	:	a태그 클릭했을때
+				a:visited	:	a태그에 클릭한 기록이 있으면
+	 -->
+
+	<h3>강아지 - 웹폰트</h3>
+	<p>태어난 강아지는 생후 10일까지를 출생견으로 본다. 
+		<br>강아지는 견종에 따라 체중이 매우 다양하며 태어난 지 14일 무렵 눈을 뜨고 소리에 반응하며 걷기 시작한다.</p>
+	<p> 몸떨기 반사는 그보다 1주일 정도 빠르다. 젖 빨기는 첫 2주간은 2시간마다 이루어지며 8일 만에 몸무게가 약 두 배로 늘어나는 등 빠르게 성장한다.</p>
+	
+	<a href="http://www.naver.com">네이버 </a>
+	<a href="http://www.google.com">구글 </a>
+</body>
+</html>

@@ -36,3 +36,13 @@ a:hover {color: orange}
 	font-size: 16px;
 	color: blue;
 }
+
+.titleline{
+	border-bottom: solid 5px orange;
+	width: 200px; 
+	margin: 0 auto;
+}
+.signupline{
+	border-bottom: solid 2px #eeeeee;
+	width: 100px;
+}

@@ -12,7 +12,7 @@
 	<br><br><br><br><br><br><br><br><br><br>
 
 	<div class="container row col-md-8 offset-2">
-		<div class="col-md-6">
+		<div class="col-md-6">ㄴ
 			<p style="font-size: 18px;">회원가입 및 정상적인 서비스 이용을 위해 아래 약관을 읽어 보시고,<br>동의 여부를 결정해 주세요</p>
 			<p>필수 약관을 동의 하셔야 회원가입이 가능합니다.</p>
 			<div class="signupline" style="border-bottom: solid 2px #eeeeee; width: 590px;"></div><br>

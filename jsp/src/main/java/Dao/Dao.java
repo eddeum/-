@@ -64,19 +64,19 @@ public class Dao {
 			if(rs.next()) {
 				return true;
 			} // if end
-		}catch(Exception e) {System.out.println("오류 : "+e);}
+		}catch(Exception e) {System.out.println("로그인오류 : "+e);}
 		return false;
 	} // 로그인 end
 	
 	// 회원탈퇴 메소드
-	public boolean delete(int mnum) {
-		String sql = "delete from member where mnum=?";
+	public boolean delete(String mid) {
+		String sql = "delete from member where mid=?";
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, mnum);
+			ps.setString(1, mid);
 			ps.executeUpdate();
 			return true;
-		}catch(Exception e) {System.out.println("오류 : "+e);}
+		}catch(Exception e) {System.out.println("회원탈퇴오류 : "+e);}
 		return false;
 	}
 	

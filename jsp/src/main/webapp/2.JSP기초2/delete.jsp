@@ -3,14 +3,15 @@
     pageEncoding="UTF-8"%>
 
     <%
-    request.setCharacterEncoding("UTF-8");
-        	
-        	int mnum = Integer.parseInt(request.getParameter("mnum"));
+   			request.setCharacterEncoding("UTF-8");
+    System.out.println("메롱");
+    		String mid = request.getParameter("id");
         	Dao memberdao = new Dao();
-        	boolean result = memberdao.delete(mnum);
+        	System.out.println("메롱메롱");
+        	boolean result = memberdao.delete(mid);
+        	System.out.println("메롱메롱메롱");
         	if(result){
         		response.sendRedirect("main.jsp");
-        		session.setAttribute("loginid", null);
         		System.out.println("회원탈퇴 성공");
         	}else{
         		response.sendRedirect("main.jsp");

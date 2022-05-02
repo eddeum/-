@@ -3,12 +3,11 @@
     pageEncoding="UTF-8"%>
 
     <%
-   			request.setCharacterEncoding("UTF-8");
-    System.out.println("메롱");
-    		String mid = request.getParameter("id");
+   			
+    		int mnum = Integer.parseInt(request.getParameter("mnum"));
         	Dao memberdao = new Dao();
         	System.out.println("메롱메롱");
-        	boolean result = memberdao.delete(mid);
+        	boolean result = memberdao.delete(mnum);
         	System.out.println("메롱메롱메롱");
         	if(result){
         		response.sendRedirect("main.jsp");

@@ -69,11 +69,11 @@ public class Dao {
 	} // 로그인 end
 	
 	// 회원탈퇴 메소드
-	public boolean delete(String mid) {
-		String sql = "delete from member where mid=?";
+	public boolean delete(int mnum) {
+		String sql = "delete from member where mnum=?";
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setString(1, mid);
+			ps.setInt(1, mnum);
 			ps.executeUpdate();
 			return true;
 		}catch(Exception e) {System.out.println("회원탈퇴오류 : "+e);}
@@ -145,5 +145,6 @@ public class Dao {
 		}catch(Exception e) {System.out.println("게시물삭제오류 : "+e);}
 		return false;
 	} // 게시물삭제 end
+	
 
 } // class end

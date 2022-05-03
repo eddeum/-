@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+
+*{
+	font-family: 'GimpoGothicBold00';
+}
+a{text-decoration: none; color: black;}
+a:hover {color: skyblue;}
+
+.header{
+	padding-top: 50px;
+}
+.mainpage{
+	height: 500px;
+	padding-top: 100px;
+}
+.footer{
+	height: 100px;
+	padding-top: 100px;
+}
+.loginpage{
+	height: 200px;
+	padding-top: 100px;
+	text-align: center;
+}
+.signuppage{
+	height: 400px;
+	padding-top: 100px;
+	
+}
+
+@font-face {
+    font-family: 'GimpoGothicBold00';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/GimpoGothicBold00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

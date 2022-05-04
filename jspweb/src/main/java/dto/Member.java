@@ -12,14 +12,14 @@ public class Member {
 	private String memail;
 	private String maddress;
 	private int mpoint;
-	private Date mdate;
+	private String mdate;
 
 	public Member() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Member(int mnum, String mid, String mpassword, String mname, String mphone, String memail, String maddress,
-			int mpoint, Date mdate) {
+			int mpoint, String mdate) {
 		super();
 		this.mnum = mnum;
 		this.mid = mid;
@@ -97,13 +97,17 @@ public class Member {
 		this.mpoint = mpoint;
 	}
 
-	public Date getMdate() {
+	public String getMdate() {
 		return mdate;
 	}
 
-	public void setMdate(Date mdate) {
+	public void setMdate(String mdate) {
 		this.mdate = mdate;
-	}	
+	}
+
+	
+	
+
 	
 	
 }

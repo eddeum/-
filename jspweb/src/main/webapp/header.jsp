@@ -26,26 +26,41 @@
 	<div class="container col-md-10 offset-2 header">
 		<div class="row">
 			<!-- 공통 -->
-			<div class="col-md-4">
+			<div>
 				<a href="/jspweb/main.jsp">Home</a>
+				<a href="#">BIG SIZE!</a>
+				<a href="#">MUSCLE-FIT</a>
+				<a href="#">1+1 이벤트</a>
+				<a href="#">아우터</a>
+				<a href="#">상의</a>
+				<a href="#">바지</a>
+				<a href="#">슈즈</a>
+				<a href="#">악세사리</a>
+				<a href="#">BEST</a>
+				<a href="#">트레이닝</a>
+				<a href="#">모델처럼입자!</a>
+				<a href="#">50% 할인</a>
+				<input type="text"><button>검색</button>
+				<a href="#"> <img src="#">장바구니 이미지</a>
 			</div>
 				
 			<!-- 로그인이 안된 상태 -->
-			<div class="col-md-3 offset-5">
+			<div>
 			<% if(loginid == null){ %>
 				
 				<a href="/jspweb/member/login.jsp">로그인</a>
 				<a href="/jspweb/member/signup.jsp">회원가입</a>
 	
 			<%} %>
+				<a href="#">고객센터</a>
 			</div>
 			
 			<!-- 만약에 로그인된 상태 -->
-			<div class="col-md-3 offset-5">
+			<div>
 			<% if(loginid != null){ %>
 				<span> <%=loginid %>님 </span>
-				<a href="logout">로그아웃</a>
-				<a href="/jspweb/member/memberinfo.jsp">회원정보</a>
+				<a href="/jspweb/logout">로그아웃</a>
+				<a href="/jspweb/member/myshopping.jsp">나의쇼핑</a>
 			<%} %>
 			</div>
 		</div>

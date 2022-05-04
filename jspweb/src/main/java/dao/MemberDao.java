@@ -69,4 +69,53 @@ public class MemberDao extends Dao {
 		return 3;
 	} // 로그인 end
 	
+	// 개별 회원정보 출력[인수 : 세션에 저장된 회원id]
+	public Member getmember(String mid) {
+//		String sql = "select * from member where mid=?";
+		String sql = "select * from member where mid = '"+mid+"'";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next() ) {
+				// 패스워드를 제외(보안상)한 검색된 레코드의 모든 필드의 값을 객체화
+				Member member = new Member(rs.getInt(1), 
+						rs.getString(2), 
+						null, 
+						rs.getString(4), 
+						rs.getString(5), 
+						rs.getString(6), 
+						rs.getString(7), 
+						rs.getInt(8), 
+						rs.getString(9) );
+				return member;				
+			}
+		}catch (Exception e) {System.out.println("회원정보출력오류"+e);}
+		return null;
+	} // 회원정보출력 end
+	
+	// 회원탈퇴시 비밀번호확인 메소드
+	public boolean passwordcheck(String mid, String mpassword) {
+		String sql = "select * from member where mid = '"+mid+"' and mpassword = '"+mpassword+"'";
+		try {
+			ps = con.prepareStatement(sql);
+
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return true;
+			} // if end
+		}catch (Exception e) {System.out.println("회원탈퇴 비밀번호확인오류"+e);}
+		return false;
+	} // 회원탈퇴시 비밀번호확인 end
+	
+	// 회원탈퇴 메소드
+	public boolean delete(String mid) {
+		String sql = "delete from member where mid = '"+mid+"'";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.executeUpdate();
+			return true;
+		}catch (Exception e) {System.out.println("회원탈퇴오류"+e);}
+		return false;
+	} // 회원탈퇴 end
+	
 }

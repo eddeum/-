@@ -10,6 +10,12 @@ a:hover {color: skyblue;}
 .header{
 	padding-top: 50px;
 }
+.loginmenu li{
+	margin-left: 10px;
+}
+.mainmenu li{
+	margin-left: 10px;
+}
 .mainpage{
 	height: 500px;
 	padding-top: 100px;

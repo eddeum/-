@@ -27,16 +27,13 @@ public class emailcheck extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String email = request.getParameter("email");
 		boolean result = MemberDao.getmemberDao().emailcheck(email);
-		if( result ) { response.getWriter().print(1); }
+		if(result) { response.getWriter().print(1); }
 		else { response.getWriter().print(2); }
 		
 		System.out.println("js와 통신(이메일체크)");
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

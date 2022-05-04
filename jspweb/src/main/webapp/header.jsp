@@ -21,50 +21,55 @@
 		String loginid = (String)session.getAttribute("login"); // 세션호출 (기본타입 = Object)
 	
 	%>
-
 	
-	<div class="container col-md-10 offset-2 header">
-		<div class="row">
-			<!-- 공통 -->
-			<div>
-				<a href="/jspweb/main.jsp">Home</a>
-				<a href="#">BIG SIZE!</a>
-				<a href="#">MUSCLE-FIT</a>
-				<a href="#">1+1 이벤트</a>
-				<a href="#">아우터</a>
-				<a href="#">상의</a>
-				<a href="#">바지</a>
-				<a href="#">슈즈</a>
-				<a href="#">악세사리</a>
-				<a href="#">BEST</a>
-				<a href="#">트레이닝</a>
-				<a href="#">모델처럼입자!</a>
-				<a href="#">50% 할인</a>
-				<input type="text"><button>검색</button>
-				<a href="#"> <img src="#">장바구니 이미지</a>
-			</div>
-				
-			<!-- 로그인이 안된 상태 -->
-			<div>
-			<% if(loginid == null){ %>
-				
-				<a href="/jspweb/member/login.jsp">로그인</a>
-				<a href="/jspweb/member/signup.jsp">회원가입</a>
-	
-			<%} %>
-				<a href="#">고객센터</a>
-			</div>
-			
-			<!-- 만약에 로그인된 상태 -->
-			<div>
-			<% if(loginid != null){ %>
-				<span> <%=loginid %>님 </span>
-				<a href="/jspweb/logout">로그아웃</a>
-				<a href="/jspweb/member/myshopping.jsp">나의쇼핑</a>
-			<%} %>
+	<div class="container col-md-12"><!-- 박스권 형성 -->
+		<div class="py-3"> <!-- 로고/로그인 메뉴 -->
+			<div class="row"><!-- 가로배치 -->
+				<div class="col-md-2"> <!-- 로고 -->
+					<a href="/jspweb/main.jsp">Home</a>
+				</div>
+				<div class="col-md-4 offset-6"> <!-- 로그인 메뉴 -->
+					<ul class="nav loginmenu"><!-- 가로배치 -->
+						<% if(loginid == null){ %>
+						<li> <a href="/jspweb/member/login.jsp">로그인</a> </li>
+						<li> <a href="/jspweb/member/signup.jsp">회원가입</a> </li>
+						<%} %>
+					
+						<% if(loginid != null){ %>
+						<span> <%=loginid %>님 </span>
+						<li> <a href="/jspweb/logout">로그아웃</a> </li>
+						<li> <a href="/jspweb/member/myshopping.jsp">나의쇼핑</a> </li>
+						<%} %>
+						<li> <a href="#">고객센터</a> </li>
+					</ul>
+				</div>
 			</div>
 		</div>
+		<div class="py-3"> <!-- 메뉴 -->
+				<ul class="nav mainmenu">
+					<li> <a href="#">BIG SIZE!</a> </li>
+					<li> <a href="#">MUSCLE-FIT</a> </li>
+					<li> <a href="#">1+1 이벤트</a> </li>
+					<li> <a href="#">아우터</a> </li>
+					<li> <a href="#">상의</a> </li>
+					<li> <a href="#">바지</a> </li>
+					<li> <a href="#">슈즈</a> </li>
+					<li> <a href="#">악세사리</a> </li>
+					<li> <a href="#">BEST</a> </li>
+					<li> <a href="#">트레이닝</a> </li>
+					<li> <a href="#">모델처럼입자!</a> </li>
+					<li> <a href="#">50% 할인</a> </li>
+					<li> <input type="text"><button>검색</button> </li>
+					<li> <a href="#"> <img src="#">장바구니 이미지</a> </li>
+				</ul>
+		</div>
 	</div>
+	
+	
+	
+
+
+	
 
 
 	<!-- 사용자정의 js -->

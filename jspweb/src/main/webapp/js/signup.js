@@ -133,7 +133,7 @@ $(function(){ // 문서 열리면 해당 코드가 실행
 					url : "../emailcheck",
 					data : {"email" : email},
 					success : function(result){
-						alert("서블릿 통신22")
+						alert("서블릿 통신22");
 						if(result == 1){
 							$("#emailcheck").html("사용중인 이메일입니다."); pass[5]=false;
 						}else{
@@ -241,3 +241,6 @@ function signup(){
         }).open();
     }
 
+function passwordchange(){
+	$("#passwordbox").css("display","block");
+} // passwordchange 메소드 end

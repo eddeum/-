@@ -28,7 +28,9 @@ function passwordcheck(mid){
 			} // else e
 		} // success end
 	});
-	
+
+}
+
 function mdelete(mid){
 	$.ajax({
 		url : "../delete",
@@ -45,7 +47,4 @@ function mdelete(mid){
 			} // else e
 		}
 	});
-}
-
-
 }

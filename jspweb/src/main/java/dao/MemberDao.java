@@ -118,4 +118,31 @@ public class MemberDao extends Dao {
 		return false;
 	} // 회원탈퇴 end
 	
+	// 회원정보수정 메소드
+	public boolean update(Member member) {
+		try {
+			if(member.getMpassword() == null) {
+				String sql = "update member set mname=?, mphone=?, memail=?, maddress=? where mnum=?";
+				ps = con.prepareStatement(sql);
+				ps.setString(1, member.getMname() );
+				ps.setString(2, member.getMphone() );
+				ps.setString(3, member.getMemail() );
+				ps.setString(4, member.getMaddress() );
+				ps.setInt(5, member.getMnum() );
+			}else {
+				String sql = "update member set mname=?, mpassword=?, mphone=?, memail=?, maddress=? where mnum=?";
+				ps = con.prepareStatement(sql);
+				ps.setString(1, member.getMname() );
+				ps.setString(2, member.getMpassword() );
+				ps.setString(3, member.getMphone() );
+				ps.setString(4, member.getMemail() );
+				ps.setString(5, member.getMaddress() );
+				ps.setInt(6, member.getMnum() );
+			} // else e
+			ps.executeUpdate();
+			return true;
+		}catch (Exception e) {System.out.println("회원정보수정오류"+e);}
+		return false;
+	} // 회원정보수정 end
+	
 }

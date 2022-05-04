@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<div class="container col-md-10 offset-2 text-center footer">
+	<div class="container text-center footer">
 		푸터페이지
 	</div>
 

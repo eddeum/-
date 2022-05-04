@@ -7,7 +7,7 @@
 <body>
 
 	<%@include file="header.jsp" %>
-	<div class="container col-md-10 offset-2 text-center mainpage">
+	<div class="container text-center mainpage">
 		메인페이지
 	</div>
 	<%@include file="footer.jsp" %>

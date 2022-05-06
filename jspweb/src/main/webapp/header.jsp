@@ -40,7 +40,7 @@
 						<li> <a href="/jspweb/logout">로그아웃</a> </li>
 						<li> <a href="/jspweb/member/myshopping.jsp">나의쇼핑</a> </li>
 						<%} %>
-						<li> <a href="#">고객센터</a> </li>
+						<li> <a href="/jspweb/board/boardlist.jsp">자유게시판</a> </li>
 					</ul>
 				</div>
 			</div>

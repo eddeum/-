@@ -37,16 +37,21 @@
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				String today = sdf.format(date);
 				for( Board board : boardlist ){
-				if(board.getBdate() != today){
 			%>
 			<tr>
 				<td> <%=board.getBnum() %> </td>
 				<td> <%=board.getBtitle() %> </td>
 				<td> <%=board.getMid() %> </td>
 				<td> <%=board.getBview() %> </td>
-				<td> <%=%> </td>
+				<%if(today==board.getBdate().split(" ")[0]){ %>
+				<td> <%=board.getBdate().split(" ")[1]%> </td>
+				<%}else{ %>
+				<td> <%=board.getBdate() %> </td>
+				<%} %>
 			</tr>
-
+			<%
+				}
+			%>
 			
 		</table>
 	</div>

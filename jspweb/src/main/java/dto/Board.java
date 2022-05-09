@@ -1,5 +1,8 @@
 package dto;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class Board {
 	
 	private int bnum;
@@ -22,7 +25,23 @@ public class Board {
 		this.bcontent = bcontent;
 		this.mnum = mnum;
 		this.bview = bview;
-		this.bdate = bdate;
+		// 작성일이 오늘이면 시간만 표시 아니면 날짜만 표시
+			// 현재 날짜 : LocalDate.now()
+		if(bdate != null) {
+			DateTimeFormatter dateformat = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // 날짜 형식 변환 설정
+			String today = dateformat.format(LocalDate.now() ); // 오늘날짜를 문자열변환
+			String boardday = bdate.split(" ")[0];
+			String boardtime = bdate.split(" ")[1];
+								// db에 저장된 게시물 등록날짜의 날짜/시간 중에 split으로 분리후 앞에 있는 날짜만 가져오기
+			if(today.equals(boardday) ) { // 현재날짜와 게시물등록날짜와 동일하면
+				this.bdate = boardtime;
+			}else { // 동일하지 않으면
+				this.bdate = boardday;
+			} // else end
+		}else {
+			this.bdate = bdate;
+		}
+
 		this.bfile = bfile;
 		this.mid = mid;
 	}

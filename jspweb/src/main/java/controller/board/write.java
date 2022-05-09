@@ -50,7 +50,7 @@ public class write extends HttpServlet {
 		
 		String uploadpath = request.getSession().getServletContext().getRealPath("/board/upload");
 				
-		// 첨부파일 업로드
+		// 첨부파일 업로드[MultipartRequest : cos 라이브러리 제공 클래스]
 		MultipartRequest multi = new MultipartRequest(
 				request, 		// 1. 요청방식
 				uploadpath, 	// 2. 파일 저장 경로
@@ -59,7 +59,6 @@ public class write extends HttpServlet {
 				new DefaultFileRenamePolicy() );	// 5. 보안방식 : 동일한 파일명이 있을경우 자동 이름 변환
 		
 		// 데이터 요청
-		request.setCharacterEncoding("UTF-8");
 		
 		String btitle = multi.getParameter("btitle");
 		String bcontent = multi.getParameter("bcontent");

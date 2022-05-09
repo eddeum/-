@@ -38,9 +38,17 @@
 				String today = sdf.format(date);
 				for( Board board : boardlist ){
 			%>
+			<!-- 행을 클릭했을때[js] 
+				<tr onclick="location.href='boardview.jsp'" style="cursor:pointer;">
+				링크[식별 번호 같이 이동]
+					// 1. HTML : 파일명(경로).jsp?변수명=값
+					// 2. JS : "location.href='파일명(경로).jsp?변수명=값'"
+					// 3. java(서블릿) : response.sendRedirect("파일명(경로).jsp?변수명=값");
+			-->
 			<tr>
 				<td> <%=board.getBnum() %> </td>
-				<td> <%=board.getBtitle() %> </td>
+				<td> <a href="boardview.jsp?bnum=<%=board.getBnum()%>">
+						<%=board.getBtitle() %></a> </td>
 				<td> <%=board.getMid() %> </td>
 				<td> <%=board.getBview() %> </td>
 				<%if(today==board.getBdate().split(" ")[0]){ %>

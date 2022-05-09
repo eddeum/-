@@ -8,6 +8,7 @@ a{text-decoration: none; color: black;}
 a:hover {color: skyblue;}
 
 .header{
+	height : 300px;
 	padding-top: 50px;
 }
 .loginmenu li{
@@ -18,11 +19,11 @@ a:hover {color: skyblue;}
 }
 .mainpage{
 	height: 500px;
-	padding-top: 100px;
+	margin-top: 100px;
 }
 .footer{
 	height: 100px;
-	padding-top: 100px;
+	margin-top: 100px;
 }
 .loginpage{
 	height: 200px;

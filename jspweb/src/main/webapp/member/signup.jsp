@@ -28,7 +28,7 @@
 			이메일 : <input type="text" id="memail" name="memail" placeholder="user email">
 			@
 			<input type="text" id="memailaddress" name="memailaddress">
-			<select id="emailselect">
+			<select id="emailselect" style="height: 30px;">
 				<option value="">직접입력</option>
 				<option value="naver.com">naver.com</option>
 				<option value="nate.com">nate.com</option>

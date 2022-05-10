@@ -158,4 +158,17 @@ public class MemberDao extends Dao {
 		return 0;
 	} // 회원번호출력 end
 	
+	// 회원id 출력 메소드 
+	public String getmid( int mnum ) {
+		String sql = "select mid from member where mnum = "+mnum;
+		try { 
+			ps=con.prepareStatement(sql); 
+			rs=ps.executeQuery(); 
+			if(rs.next() ) {
+				return rs.getString(1); 
+			} // if end
+		}catch (Exception e) {System.out.println("회원아이디출력오류"+e);}
+		return null;
+	} // 회원id출력 end
+	
 }

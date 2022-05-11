@@ -35,10 +35,40 @@ public class BoardDao extends Dao {
 		return false;
 	} // 게시물쓰기 end
 	
+	// 2-2 게시물 전체 개수 메소드
+	public int gettotalrow(String key, String keyword) {
+		// 만약에 작성자 요청이면
+		if(key.equals("mid") ) {key = "mnum"; keyword = MemberDao.getmemberDao().getmnum(keyword)+"";}
+		
+		String sql = null;
+		if(key.equals("") && keyword.equals("")) {
+			sql = "select count(*) from board";
+		}else {
+			sql = "select count(*) from board where "+key+" like '%"+keyword+"%'";
+		} // else end
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next() ) {
+				return rs.getInt(1);
+			} // if end
+		}catch(Exception e) {System.out.println("게시물전체개수출력오류"+e);}
+		return 0;
+	} // 게시물전체개수 end
+	
 	// 2. 모든 게시물 출력 메소드[추후기능 검색 : 조건]
-	public ArrayList<Board> getboardlist() {
+	public ArrayList<Board> getboardlist(int startrow, int listsize, String key, String keyword) {
 		ArrayList<Board> boardlist = new ArrayList<Board>();
-		String sql = "select a.* ,b.mid  FROM board a left join member b on a.mnum = b.mnum order by bnum desc";
+		// 만약에 작성자 요청이면
+		if(key.equals("mid") ) {key = "mnum"; keyword = MemberDao.getmemberDao().getmnum(keyword)+"";}
+		
+		// 내림차순
+		String sql = null;
+		if(key.equals("") && keyword.equals("")) {
+			sql = "select * from board order by bnum desc limit "+startrow+","+listsize;
+		}else {
+			sql = "select * from board where "+key+" like '%"+keyword+"%' order by bnum desc limit "+startrow+","+listsize;
+		} // else end
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -50,7 +80,7 @@ public class BoardDao extends Dao {
 						rs.getInt(5), 
 						rs.getString(6), 
 						rs.getString(7), 
-						rs.getString(8) );
+						null );
 				boardlist.add(board);
 			} // while end
 			return boardlist;
@@ -207,7 +237,7 @@ public class BoardDao extends Dao {
 			return rereplylist;
 		}catch(Exception e) {System.out.println("대댓글출력오류"+e);}
 		return null;
-	} // 대댓글출력 end
+	} // 대댓글출력 endz
 	
 	// 9. 댓글 수정 메소드[인수 : 수정할 댓글 번호]
 	public boolean replyupdate(int rnum, String rcontent) {

@@ -3,6 +3,8 @@ package dto;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import dao.MemberDao;
+
 public class Board {
 	
 	private int bnum;
@@ -43,7 +45,7 @@ public class Board {
 		}
 
 		this.bfile = bfile;
-		this.mid = mid;
+		this.mid = MemberDao.getmemberDao().getmid(mnum);
 	}
 
 	

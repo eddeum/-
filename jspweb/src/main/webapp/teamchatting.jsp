@@ -15,13 +15,7 @@
 	<div class="container">
 		<h3>비회원제 실시간 채팅 페이지</h3>
 		<div id="chattable" style="width: 500px; height: 500px; border: solid 1px black; margin: 0 auto;">
-		<%
-			ArrayList<Chat> chatlist = ChatDao.getChatDao().getchatlist();
-			for(Chat chat : chatlist){
-		%>
-			[닉네임] <%=chat.getCname() %>
-			[내용] <%=chat.getCcontent() %><br>
-		<%	} %>
+
 		</div>
 		<div style="width: 500px; margin: 0 auto;">
 			<input id="nickname" type="text" placeholder="닉네임">

@@ -65,11 +65,43 @@ public class ProductDao extends Dao {
 		}catch(Exception e) {System.out.println("제품등록오류"+e);}
 		return false;
 	} // 제품등록 end
-	// 2. 제품 모든 호출
-	public ArrayList<Product> getproductlist(){return null;}
-	// 3. 제품 개별 호출
+	// 2. 모든 제품 호출
+	public ArrayList<Product> getproductlist(){
+		ArrayList<Product> productlist = new ArrayList<Product>();
+		String sql = "select * from product";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next() ) {
+				Product product = new Product(rs.getInt(1), 
+						rs.getString(2), 
+						rs.getInt(3), 
+						rs.getFloat(4), 
+						rs.getInt(5), 
+						rs.getString(6), 
+						rs.getInt(7) );
+				productlist.add(product);
+			} // while end
+			return productlist;
+		}catch(Exception e) {System.out.println("모든제품호출오류"+e);}
+		return null;
+	} // 모든제품호출 end
+	
+	// 3. 개별 제품 호출
 	public Product getproduct() {return null;}
 	// 4. 제품 수정
+	
+	// 4-2. 제품 상태 변경
+	public boolean activechange(int pnum, int active) {
+		String sql = "update product set pactive = "+active+" where pnum="+pnum;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.executeUpdate();
+			return true;
+		}catch(Exception e) {System.out.println("제품상태변경오류"+e);}
+		return false;
+	}
+	
 	// 5. 제품 삭제
 ////////////////////////////////////////////////////////////////////// 재고 //////////////////////////////////////////////////////////////////////
 	// 1. 제품의 재고 등록

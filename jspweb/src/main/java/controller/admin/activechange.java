@@ -1,9 +1,6 @@
 package controller.admin;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,19 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.ProductDao;
-import dto.Category;
 
 /**
- * Servlet implementation class getcategory
+ * Servlet implementation class activechange
  */
-@WebServlet("/admin/getcategory")
-public class getcategory extends HttpServlet {
+@WebServlet("/admin/activechange")
+public class activechange extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public getcategory() {
+    public activechange() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,25 +28,17 @@ public class getcategory extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// DB에서 카테고리 리스트 호출
-		ArrayList<Category> categorylist = ProductDao.getproduDao().getcategorylist();
-		// 자바에서 js(ajax)에게 html 전송
-		response.setCharacterEncoding("UTF-8");
-		PrintWriter out =  response.getWriter();
-		String html = ""; // 응답할 문자열
-		
-		// 만약에 카테고리 개수가 6배수마다 줄바꿈처리
-		int i = 1;
-		for(Category temp : categorylist) {
-			html += "<input type=\"radio\" name=\"cnum\" value=\""+temp.getCnum()+"\">"+temp.getCname();
-			if(i%6 == 0) html += "<br>";
-			i++;
-		
-		} // for end
-		
-		// java에서 " " : 문자열 인식용
-		// 			\" : "표시(출력)
-		out.print(html); // 해당 문자열 응답
+		// 변수요청
+		int active = Integer.parseInt(request.getParameter("active") );
+		int pnum = Integer.parseInt(request.getParameter("pnum") );
+		// DB처리
+		boolean result =ProductDao.getproduDao().activechange(pnum, active);
+		// DB결과
+		if(result) {
+			response.getWriter().print(1);
+		}else {
+			response.getWriter().print(2);
+		} // else end
 	}
 
 	/**

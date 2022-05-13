@@ -2,8 +2,14 @@
 // 
 function categorybtn(){
 	$("#categoryinput").html(
-		'<input type="text" id="cname">'+
-		'<button onclick="categoryadd()" type="button">등록</button>'
+		'<div class="row">'+
+			'<div class="col-md-5">'+
+				'<input class="form-control" type="text" id="cname">'+
+			'</div>'+
+			'<div class="col-md-5">'+
+				'<button class="form-control" onclick="categoryadd()" type="button">등록</button>'+
+			'</div>'+
+		'</div>'
 	)
 } // 카테고리추가버튼 end
 
@@ -24,8 +30,13 @@ function categoryadd(){
 	}); // ajax end
 } // 카테고리추가 end
 
+// 카테고리
+$(function category(){ // $( 함수(){ 실행코드 }); : js 열람시 실행되는 함수 
+	getcategory();
+});
+
 // 카테고리 호출
-$(function getcategory(){
+function getcategory(){
 	$.ajax({
 		url : "getcategory",
 		success : function(result){
@@ -33,7 +44,7 @@ $(function getcategory(){
 			
 		} // success en
 	}); // ajax end
-}); // 카테고리호출 end
+}; // 카테고리호출 end
 
 // 제품등록 form전송
 function productadd(){
@@ -67,5 +78,21 @@ function productadd(){
 		} // success end
 	}); // ajax end
 } // 제품등록 form전송 end
+
+
+// 첨부파일이 변경되면 특정태그에 첨부파일 이미지 표시하기
+$("#pimg").change(function(e){
+	// 클라이언트가 업로드시 업로드파일의 경로알기
+	let reader = new FileReader();	// 파일 경로를 읽어오는 클래스
+	reader.readAsDataURL(e.target.files[0]); // readAsDataURL(파일) : 해당파일의 경로찾음
+	reader.onload = function(e){ // 찾은 파일의 경로 실행
+		$("#preview").attr("src", e.target.result);
+	}
+	
+	alert(e);					// change된 객체
+	alert(e.target);			// 객체.target() -> html 태그
+	alert(e.target.files[0]); 	// 객체내 파일
+	alert($("#pimg").val() );	// 사용시 -> 경로를 알수 없다.
+}); // 이미지표시 emd
 
 // $(함수(){실행코드}); : js 열람시 무조건 실행되는 함수

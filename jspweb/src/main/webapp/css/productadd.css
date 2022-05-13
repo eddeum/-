@@ -1,0 +1,11 @@
+
+
+.admin_title{
+	margin: 70px 0px;
+	padding : 10px;
+	text-align: center;
+	border-bottom: 2px orange solid;
+}
+#categorybox input{
+	margin: 5px 20px;
+}

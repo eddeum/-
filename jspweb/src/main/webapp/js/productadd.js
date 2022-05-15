@@ -3,10 +3,10 @@
 function categorybtn(){
 	$("#categoryinput").html(
 		'<div class="row">'+
-			'<div class="col-md-5">'+
+			'<div class="col-md-10">'+
 				'<input class="form-control" type="text" id="cname">'+
 			'</div>'+
-			'<div class="col-md-5">'+
+			'<div class="col-md-2">'+
 				'<button class="form-control" onclick="categoryadd()" type="button">등록</button>'+
 			'</div>'+
 		'</div>'

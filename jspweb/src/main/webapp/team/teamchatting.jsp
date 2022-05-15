@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<%@include file="header.jsp" %>
+	<%@include file="../header.jsp" %>
 	<div class="container">
 		<h3>비회원제 실시간 채팅 페이지</h3>
 		<div id="chattable" style="width: 500px; height: 500px; border: solid 1px black; margin: 0 auto;">
@@ -23,7 +23,7 @@
 			<button type="button" onclick="chat()">입력</button>
 		</div>
 	</div>
-	<%@include file="footer.jsp" %>
+	<%@include file="../footer.jsp" %>
 	
 	<script src="/jspweb/js/chat.js" type="text/javascript"></script>
 

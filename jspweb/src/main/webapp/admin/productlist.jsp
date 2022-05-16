@@ -1,3 +1,4 @@
+<%@page import="dto.Stock"%>
 <%@page import="dto.Product"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.ProductDao"%>
@@ -28,25 +29,65 @@
 			<th><%=p.getPname() %></th> <th><%=p.getPprice() %></th> 
 			<th><%=p.getPdiscount() %></th> <th><%=p.getPprice()* p.getPdiscount() %></th> 
 			<th><%=p.getPactive() %></th> <th><%=p.getCnum() %></th>
-			<th>색상</th> <th>사이즈</th> <th>재고수량</th> <th>수정일</th>
+			<th> <!-- 색상 선택 [id값을 제품별 select 식별id = '문자'+제품번호 // select가 변경되면 이벤트가 발생-->
+				<select id="colorbox<%=p.getPnum()%>" onchange="getamount(<%=p.getPnum()%>)">
+				<%
+					ArrayList<Stock> stocks =ProductDao.getproduDao().getstock(p.getPnum() ); 
+					for(Stock s : stocks){
+				%>
+					<option><%=s.getScolor()%> </option>
+				<%	} %>
+				</select>
+			</th>
+			 
+			<th> <!-- 사이즈 선택 -->
+				<select id="sizebox<%=p.getPnum()%>" onchange="getamount(<%=p.getPnum()%>)">
+				<%for(Stock s : stocks){%>
+					<option><%=s.getSsize()%> </option>
+				<%	} %>
+				</select>
+			</th> 
+			
+			<th> <!-- 색상과 사이즈에 따른 재고 표시 -->
+				<%if(!stocks.isEmpty() ){ // 재고리스트가 비어 있지 않으면 %>
+					<%if(stocks.get(0).getSamount() == 0 ){ %>
+					<span id="amountbox<%=p.getPnum()%>"> 해당 사이즈색상<br> 재고없음 </span> 
+					<%}else{ %>
+					<span id="amountbox<%=p.getPnum()%>"> <%=stocks.get(0).getSamount() %> </span>
+					<%} %>
+				<%}else{ // 재고리스트가 비어있으면%>
+				<span id="amountbox<%=p.getPnum()%>">재고없음</span>
+				<%} %>
+			</th> 
+			
+			<th> <!-- 색상과 사이즈에 따른 재고 수정일 표시 -->
+				<%if(!stocks.isEmpty() ){ // 재고리스트가 비어 있지 않으면 %>
+					<%if(stocks.get(0).getSamount() == 0 ){ %>
+					<span id="datebox<%=p.getPnum()%>"> - </span> 
+					<%}else{ %>
+					<span id="datebox<%=p.getPnum()%>"> <%=stocks.get(0).getUpdatedate() %> </span>
+					<%} %>
+				<%}else{ // 재고리스트가 비어있으면%>
+				<span id="datebox<%=p.getPnum()%>"> - </span>
+				<%} %>
+			</th>
+			
 			<th>
 				<button>제품삭제</button>
 				<button>제품수정</button>
 				<button onclick="pnummove(<%=p.getPnum() %>)" data-bs-toggle="modal" data-bs-target="#activemodal">상태변경</button>
-				<button>재고변경</button>
+				<button onclick="getstock(<%=p.getPnum() %>)" data-bs-toggle="modal" data-bs-target="#stockmodal">재고변경</button>
 			</th>
 		</tr>
 		<%}%>
 	</table>
-	
-
 	
 	<!-- 상태변경 부트스트랩 모달구역 -->
 	<div class="modal" tabindex="-1" id="activemodal">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title">제품상태변경</h5> <!-- 모달 제목 -->
+	        <h5 class="modal-title">제품의 상태변경</h5> <!-- 모달 제목 -->
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
@@ -59,6 +100,31 @@
 	     	<button type="button" class="btn btn-primary" onclick="activechange(2)">품절</button>
 	     	<button type="button" class="btn btn-primary" onclick="activechange(3)">중단</button>
 	        <button id="modalclosebtn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<!-- 재고변경 부트스트랩 모달구역 -->
+		<div class="modal" tabindex="-1" id="stockmodal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">제품의 재고변경</h5> <!-- 모달 제목 -->
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body"> <!-- 모달 내용 -->
+	        <table id="stocklistbox">
+	        	
+	        </table>
+	        <div id="updatebox" style="display: none;">
+	        	재고번호 : <input type="hidden" id="snum">
+	        	재고수량 : <input type="text" id="samount">
+	        </div>
+	      </div>
+	      <div class="modal-footer"> <!-- 모달 버튼 -->
+	     	<button type="button" class="btn btn-primary" onclick="stockupdate()">수정 처리</button>
+	        <button id="modalclosebtn2" type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
 	      </div>
 	    </div>
 	  </div>

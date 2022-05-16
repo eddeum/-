@@ -11,19 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.ProductDao;
-import dto.Category;
+import dto.Product;
 
 /**
- * Servlet implementation class getcategory
+ * Servlet implementation class getproduct
  */
-@WebServlet("/admin/getcategory")
-public class getcategory extends HttpServlet {
+@WebServlet("/admin/getproduct")
+public class getproduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public getcategory() {
+    public getproduct() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,34 +32,27 @@ public class getcategory extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 반환타입 변수 호출
+		// 변수요청
 		String type = request.getParameter("type");
-		
-		// DB에서 카테고리 리스트 호출
-		ArrayList<Category> categorylist = ProductDao.getproduDao().getcategorylist();
-		// 자바에서 js(ajax)에게 html 전송
+		int cnum = Integer.parseInt(request.getParameter("cnum") );
+		// 응답 객체 설정
 		response.setCharacterEncoding("UTF-8");
-		PrintWriter out =  response.getWriter();
-		String html = ""; // 응답할 문자열
-		
+		PrintWriter out = response.getWriter();
+		// DB 처리
+		ArrayList<Product> list = ProductDao.getproduDao().getproductlist();
+		String html = ""; // 반환될 html의 변수 선언
+		// 반환 타입
 		if(type != null && type.equals("option") ) {
-			for(Category temp : categorylist) {
-				html += "<option value=\""+temp.getCnum() +"\">"+temp.getCname()+"</option>";
+			for(Product temp : list) {
+				if(temp.getCnum() == cnum) {
+					html += "<option value=\""+temp.getPnum() +"\">"+temp.getPname()+"</option>";
+				} // if end
 			} // for end
 		}else {
-			// 만약에 카테고리 개수가 6배수마다 줄바꿈처리
-			int i = 1;
-			for(Category temp : categorylist) {
-				html += "<input type=\"radio\" name=\"cnum\" value=\""+temp.getCnum()+"\">"+temp.getCname();
-				if(i%6 == 0) html += "<br>";
-				i++;
-			} // for end	
+			
 		} // else end
-		
-		
-		// java에서 " " : 문자열 인식용
-		// 			\" : "표시(출력)
-		out.print(html); // 해당 문자열 응답
+		// 반환
+		out.print(html);
 	}
 
 	/**

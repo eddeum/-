@@ -1,7 +1,6 @@
 package dao;
 
-import java.util.ArrayList;
-
+import java.util.ArrayList;import controller.admin.stockadd;
 import dto.Category;
 import dto.Product;
 import dto.Stock;
@@ -105,10 +104,53 @@ public class ProductDao extends Dao {
 	// 5. 제품 삭제
 ////////////////////////////////////////////////////////////////////// 재고 //////////////////////////////////////////////////////////////////////
 	// 1. 제품의 재고 등록
-	public boolean ssave() {return false;}
+	public boolean ssave(Stock stock) {
+		String sql = "insert into stock(scolor, ssize, samount, pnum) values(?, ?, ?, ?)";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, stock.getScolor() );
+			ps.setString(2, stock.getSsize() );
+			ps.setInt(3, stock.getSamount() );
+			ps.setInt(4, stock.getPnum() );
+			ps.executeUpdate();
+			return true;
+		}catch(Exception e) {System.out.println("재고등록오류"+e);}
+		return false;
+	} // 재고등록 end
+	
 	// 2. 제품의 재고 호출
-	public Stock getstock() {return null;}
+	public ArrayList<Stock> getstock(int pnum) {
+		ArrayList<Stock> slist = new ArrayList<Stock>();
+		String sql = "select * from stock where pnum="+pnum;
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next() ) {
+				Stock stock = new Stock(rs.getInt(1), 
+						rs.getString(2), 
+						rs.getString(3), 
+						rs.getInt(4), 
+						rs.getString(5), 
+						rs.getString(6), 
+						rs.getInt(7) );
+				slist.add(stock);
+			} // while end
+			return slist;
+		}catch(Exception e) {System.out.println("재고호출오류"+e);}
+		return null;
+	} // 재고호출 end
+	
 	// 3. 제품의 재고 수정
+	public boolean stockupdate(int snum, int samount) {
+		String sql = "update stock set samount = "+samount+" where snum ="+snum;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.executeUpdate();
+			return true;
+		}catch(Exception e) {System.out.println("재고수정오류"+e);}
+		return false;
+	} // 재고수정 end
+	
 	// 4. 제품의 재고 삭제
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 } // class end

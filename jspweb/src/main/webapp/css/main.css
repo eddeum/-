@@ -2,7 +2,6 @@
 
 
 *{
-	
 	font-family: 'GimpoGothicBold00';
 	padding: 0px;
 	margin: 0px;
@@ -10,15 +9,9 @@
 a{text-decoration: none; color: black;}
 a:hover {color: skyblue;}
 
-.header{
-	padding-top: 50px;
-}
-.loginmenu li{
-	margin-left: 10px;
-}
-.footer{
-	margin-top: 100px;
-}
+.header{padding-top: 50px;}
+.loginmenu li{margin-left: 10px;}
+.footer{margin-top: 100px;}
 .loginpage{
 	padding-top: 100px;
 	text-align: center;
@@ -32,24 +25,14 @@ a:hover {color: skyblue;}
 	padding: 10px;
 	margin-top: 50px;
 }
-.boardview_content{
-	min-height: 400px; /*최소높이*/
-}
+.boardview_content{min-height: 400px; /*최소높이*/}
 textarea{
 	resize: none; /*크기변경 불가능*/
 }
-.replywriter{
-	font-size: 14px;
-}
-.replybtn{
-	font-size: 10px;
-}
-.replyday{
-	font-size: 7px;
-}
-.header_logo{
-	font-size: 40px;
-}
+.replywriter{font-size: 14px;}
+.replybtn{font-size: 10px;}
+.replyday{font-size: 7px;}
+.header_logo{font-size: 40px;}
 .header_topmenu{
 	font-size: 13px;
 	color: #999999;
@@ -67,22 +50,49 @@ textarea{
 	border-radius: 10px;
 	margin-right: 10px;
 }
-.dropdown:hover .dropdown-menu{
-	display: block;
-}
+.dropdown:hover .dropdown-menu{display: block;}
 .boardlist_title{
 	width : 20%;
 	border-bottom: solid 1px black;
 	padding: 20px;
 	margin: 100px 0px 50px 0px;
 }
-.boardlist_topbtn{
-	margin: 20px 0px;
-}
+.boardlist_topbtn{margin: 20px 0px;}
 .pagenum{
 	color: black;
 	font-size: 12px;
 }
+
+.adbox{margin: 50px 10px 50px 0px;}
+.main_box{margin-bottom: 70px;}
+.main_title{
+	text-align: center;
+	font-size: 23px;
+	margin: 20px;
+}
+.best_box img{
+	width: 100%;
+}
+.p_item{margin: 10px;}
+.p_title{font-size: 12px;}
+.p_size{
+	color: #999999;
+	font-size: 10px;
+	border-bottom: 1px solid #999999;
+	padding-bottom: 5px;
+}
+.p_discount{
+	color: #999999;
+	font-size: 10px;
+	text-decoration: line-through /*취소선*/
+}
+.p_price{font-size: 10px;}
+.p_review{
+	font-size: 10px;
+	color: #999999;
+	text-align: right;
+}
+
 
 
 

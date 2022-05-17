@@ -87,7 +87,24 @@ public class ProductDao extends Dao {
 	} // 모든제품호출 end
 	
 	// 3. 개별 제품 호출
-	public Product getproduct() {return null;}
+	public Product getproduct(int pnum) {
+		String sql = "select * from product where pnum="+pnum;
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next() ) {
+				Product product = new Product(rs.getInt(1), 
+						rs.getString(2), 
+						rs.getInt(3), 
+						rs.getFloat(4), 
+						rs.getInt(5), 
+						rs.getString(6), 
+						rs.getInt(7) );
+					return product;
+			} // if end
+		}catch(Exception e) {System.out.println("개별제품호출오류"+e);}
+		return null;
+	} // 개별 제품 호출
 	// 4. 제품 수정
 	
 	// 4-2. 제품 상태 변경

@@ -1,3 +1,5 @@
+<%@page import="java.util.TreeSet"%>
+<%@page import="java.util.Set"%>
 <%@page import="dto.Stock"%>
 <%@page import="dto.Product"%>
 <%@page import="java.util.ArrayList"%>
@@ -22,28 +24,34 @@
 		</tr>
 		<%
 			ArrayList<Product> products =  ProductDao.getproduDao().getproductlist();
-			for(Product p : products){
+			for(Product p : products){ // 모든 제품 반복문
+				////---------    제품별 칼라 / 사이즈 중복제거 set 선언
+				ArrayList<Stock> stocks = ProductDao.getproduDao().getstock(p.getPnum()); 
+					Set<String> colors = new TreeSet<String>();
+					Set<String> sizes = new TreeSet<String>();
+				for( Stock s : stocks ){
+					colors.add( s.getScolor() );
+					sizes.add( s.getSsize() );
+				} // for end
 		%>
 		<tr>
 			<th><%=p.getPnum() %></th> <th><img width="100%" src="/jspweb/admin/productimg/<%=p.getPimg()%>"> </th> 
 			<th><%=p.getPname() %></th> <th><%=p.getPprice() %></th> 
 			<th><%=p.getPdiscount() %></th> <th><%=p.getPprice()* p.getPdiscount() %></th> 
 			<th><%=p.getPactive() %></th> <th><%=p.getCnum() %></th>
+			
 			<th> <!-- 색상 선택 [id값을 제품별 select 식별id = '문자'+제품번호 // select가 변경되면 이벤트가 발생-->
 				<select id="colorbox<%=p.getPnum()%>" onchange="getamount(<%=p.getPnum()%>)">
-				<%
-					ArrayList<Stock> stocks =ProductDao.getproduDao().getstock(p.getPnum() ); 
-					for(Stock s : stocks){
-				%>
-					<option><%=s.getScolor()%> </option>
+				<%	for( String c : colors){ // colors 값 호출  %> 
+					<option><%=c%> </option>
 				<%	} %>
 				</select>
 			</th>
 			 
 			<th> <!-- 사이즈 선택 -->
 				<select id="sizebox<%=p.getPnum()%>" onchange="getamount(<%=p.getPnum()%>)">
-				<%for(Stock s : stocks){%>
-					<option><%=s.getSsize()%> </option>
+				<%	for(String s : sizes){%>
+					<option><%=s%> </option>
 				<%	} %>
 				</select>
 			</th> 

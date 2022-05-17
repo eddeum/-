@@ -48,13 +48,11 @@ function getcategory(){
 
 // 제품등록 form전송
 function productadd(){
-	alert("졸려");	
 	var form = $("#addform")[0];
 	var formData = new FormData(form);
 	// 폼태그 id 호출[사용자가 작성하지 않는 폼이 존재하기 때문에 0으로 호출]
 	// js에서 지원하는 FormData 클래스를 이용한 form태그 객체화
 	// ajax 기본적으로 문자열 전송한다. 인코딩 URL 타입 : application/x-www-form-urlencoded
-	alert("피곤해유");
 	$.ajax({
 		url : "productadd",
 		type : 'POST',
@@ -88,11 +86,6 @@ $("#pimg").change(function(e){
 	reader.onload = function(e){ // 찾은 파일의 경로 실행
 		$("#preview").attr("src", e.target.result);
 	}
-	
-	alert(e);					// change된 객체
-	alert(e.target);			// 객체.target() -> html 태그
-	alert(e.target.files[0]); 	// 객체내 파일
-	alert($("#pimg").val() );	// 사용시 -> 경로를 알수 없다.
 }); // 이미지표시 emd
 
 // $(함수(){실행코드}); : js 열람시 무조건 실행되는 함수

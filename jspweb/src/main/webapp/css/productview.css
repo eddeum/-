@@ -43,4 +43,23 @@ img{width: 100%;}
 .total_price{
 	text-align: right;
 }
-
+.pricetbox{
+	font-size: 12px;
+}
+.pointbox{
+	font-size: 10px;
+}
+.btnbox button{
+	background-color: white;
+	border: solid 1px #999999;
+	width: 30%;
+	padding: 20px 10px;
+	margin-right: 8px;
+}
+#btn1{
+	background-color: black;
+	color: white;
+}
+#btn3{
+	color: red;
+}

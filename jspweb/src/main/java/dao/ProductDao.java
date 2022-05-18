@@ -170,4 +170,37 @@ public class ProductDao extends Dao {
 	
 	// 4. 제품의 재고 삭제
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	// 1. 관심등록
+	public int saveplike(int pnum, int mnum) {
+		// 1. 검색
+		try {
+			String sql = "select plikenum from plike where pnum="+pnum+" and mnum="+mnum;
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next() ) { // 2. 만약에 존재하면 삭제처리
+				sql = "delete from plike where plikenum= "+rs.getInt(1);
+				ps = con.prepareStatement(sql);
+				ps.executeUpdate();
+				return 2; // 삭제
+			}else { // 3. 만약에 존재하지 않으면 등록처리
+				sql = "insert into plike(pnum, mnum) values("+pnum+", "+mnum+")";
+				ps = con.prepareStatement(sql);
+				ps.executeUpdate();
+				return 1; // 등록
+			}
+		}catch(Exception e) {System.out.println("관심등록오류"+e);} 
+		return 3; // 4. 등록오류
+	} // 관심등록 end
+	
+	// 2. 관심등록 여부 확인 메소드
+	public boolean getplike(int pnum, int mnum) {
+		String sql = "select * from plike where pnum = "+pnum+" and mnum ="+mnum;
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next() ) return true;
+		}catch(Exception e) {System.out.println("관심등록확인오류"+e);} 
+		return false;
+	}
+
 } // class end

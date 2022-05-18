@@ -1,3 +1,4 @@
+<%@page import="dao.MemberDao"%>
 <%@page import="java.util.TreeSet"%>
 <%@page import="java.util.Set"%>
 <%@page import="dto.Stock"%>
@@ -89,19 +90,27 @@
 					 	</tr>
 					 </table>
 					 <table id="select_table" class="table my-5">
-					 	<tr>
-					 		
-					 	</tr>
 					 </table>
 					 
 					 <div class="row my-5">
 					 	<div class="col-md-6">총 상품금액</div>
-					 	<div class="col-md-6 total_price">54,900원(1개)</div>
+					 	<div id="total_price" class="col-md-6 total_price"></div>
 					 </div>
-					 <div class="row my-5">
-					 	<div class="col-md-4"> <button class="form-control p-4"  style="background-color: black; color: white;">바로 구매하기</button> </div>
-					 	<div class="col-md-4"> <button class="form-control p-4">장바구니 담기</button> </div>
-					 	<div class="col-md-4"> <button class="form-control p-4">관심상품 등록</button> </div>
+					 <%
+					 		String mid = (String)session.getAttribute("login");
+					 		int mnum = MemberDao.getmemberDao().getmnum(mid);
+					 %>
+					 <div id="btnbox" class="btnbox">
+					 	<button id="btn1">바로 구매하기</button>
+					 	<button id="btn2" onclick="savecart(<%=mnum %>)">장바구니 담기</button>
+					 	<%
+					 		// 만약에 로그인이 되어있고 관심등록이 되어있으면
+					 		if(mid != null && ProductDao.getproduDao().getplike(pnum, mnum)){
+					 	%>
+					 	<button id="btn3" onclick="saveplike('<%=mid %>')">♥</button>
+					 	<%	}else{ %>
+					 	<button id="btn3" onclick="saveplike('<%=mid %>')">♡</button>
+					 	<%	} %>
 					 </div>
 				</div>
 			</div>

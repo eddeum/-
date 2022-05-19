@@ -1,6 +1,12 @@
 package dao;
 
-import java.util.ArrayList;import controller.admin.stockadd;
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import controller.admin.stockadd;
+import dto.Cart;
 import dto.Category;
 import dto.Product;
 import dto.Stock;
@@ -203,4 +209,72 @@ public class ProductDao extends Dao {
 		return false;
 	}
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// 1. 장바구니 등록
+	public boolean cartsave(Cart cart) {
+	
+		try {
+			// 1. 장바구니 내에 동일한 제품이 존재하면 수량만 업데이트 처리
+			String sql = "select cartnum from cart where snum = "+cart.getSnum()+" and mnum = "+cart.getMnum();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next() ) { // 동일한 제품이 존재하면
+				sql = "update cart set samount = samount + "+cart.getSamount()+ " , totalprice = totalprice + "+cart.getTotalprice()+
+						" where cartnum = "+rs.getInt(1);
+				ps = con.prepareStatement(sql);
+				ps.executeUpdate();
+				return true;
+			}else { // 존재하지 않으면 등록
+			// 2. 존재하지 않으면 등록
+				sql = "insert into cart(samount, totalprice, snum, mnum) values(?, ?, ?, ?)";
+				ps = con.prepareStatement(sql);
+				ps.setInt(1, cart.getSamount() );
+				ps.setInt(2, cart.getTotalprice() );
+				ps.setInt(3, cart.getSnum() );
+				ps.setInt(4, cart.getMnum() );
+				ps.executeUpdate();
+				return true;
+			} // else end
+		}catch(Exception e) {System.out.println("장바구니등록오류"+e);} 
+		return false;
+	} // 장바구니등록 end
+	
+	// 2. 장바구니 출력
+	public JSONArray getcart(int mnum) {
+		JSONArray jsonArray = new JSONArray();
+		String sql = "select"
+				+ " A.cartnum as 장바구니번호,"
+				+ " A.samount as 구매수량,"
+				+ " A.totalprice as 총금액,"
+				+ " B.scolor as 색상,"
+				+ " B.ssize as 사이즈,"
+				+ " B.pnum as 제품번호,"
+				+ " C.pname as 제품명,"
+				+ " C.pimg as 제품이미지"
+				+ " from cart A join stock B on A.snum = B.snum join product C on B.pnum = C.pnum where A.mnum = "+mnum;
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next() ) {
+				// 결과내 하나씩 모든 레코드를 -> 하나씩
+				JSONObject object = new JSONObject();
+				object.put("cartnum", rs.getInt(1) );
+				object.put("samount", rs.getInt(2) );
+				object.put("totalprice", rs.getInt(3) );
+				object.put("scolor", rs.getString(4) );
+				object.put("ssize", rs.getString(5) );
+				object.put("pnum", rs.getInt(6) );
+				object.put("pname", rs.getString(7) );
+				object.put("pimg", rs.getString(8) );
+				// 하나씩 json객체를 json배열에 담기
+				jsonArray.put(object);
+			} // while end
+			System.out.println(jsonArray.toString() );
+			return jsonArray;
+		}catch(Exception e) {System.out.println("장바구니출력오류"+e);} 
+		return null;
+	} // 장바구니 end
+
+	
+	
 } // class end

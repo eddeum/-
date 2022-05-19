@@ -10,7 +10,7 @@ $("#color_select").change(function(){
 		data : {"pnum" : pnum, "color" : color},
 		success : function(result){
 			let list = result.replace("{", "");
-			let itemlist = list.split(",");
+			let itemlist = list.split(", "); // 공백없애주기
 			let html = "";
 			html += "<option value=''>-[필수]옵션 선택-</option>";
 			for(let item of itemlist){
@@ -214,10 +214,14 @@ function savecart(mnum){
 				// 키 : value(JSONarray)
 	$.ajax({
 		url : "savecart",
-		data : {"json" : JSON.stringify(selectlist)},
+		data : {"json" : JSON.stringify(selectlist), "pnum" : $("#pnum").val()},
 		success : function(result){
-			alert("서블릿과 통신");
-		}
+			if(result == -1){
+				alert("장바구니에 등록했습니다.");
+			}else{
+				alert("오류발생[관리자에게문의] : "+(result+1)+"옵션");
+			} // else end
+		} // success end
 	}); // ajax end
 	
 } // 장바구니 담기 end

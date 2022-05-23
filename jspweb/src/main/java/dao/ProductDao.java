@@ -5,9 +5,12 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.mysql.cj.xdevapi.Statement;
+
 import controller.admin.stockadd;
 import dto.Cart;
 import dto.Category;
+import dto.Order;
 import dto.Product;
 import dto.Stock;
 
@@ -297,6 +300,40 @@ public class ProductDao extends Dao {
 		return false;
 	} // 장바구니 삭제 end
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// 주문하기
+	public boolean saveorder(Order order) {
+		String sql = "insert into porder(ordername, orderphone, orderaddress, ordertotalpay, orderrequest, mnum) values(?, ?, ?, ?, ?, ?)";
+		// ** insert 후에 자동 생성된 pk 값 가져오기
+		try {
+			ps = con.prepareStatement(sql, java.sql.Statement.RETURN_GENERATED_KEYS );
+			ps.setString(1, order.getOrdername() );
+			ps.setString(2, order.getOrderphone() );
+			ps.setString(3, order.getOrderaddress() );
+			ps.setInt(4, order.getOrdertotalpay() );
+			ps.setString(5, order.getOrderrequest());
+			ps.setInt(6, order.getMnum() );
+			ps.executeUpdate();
+			rs = ps.getGeneratedKeys();
+			if(rs.next() ) {
+				System.out.println("방금생성된pk값"+rs.getInt(1));
+				int pk = rs.getInt(1);
+				
+				// cart -> porderdetail
+				sql = "insert into porderdetail(samount, totalprice, ordernum, snum)"
+						+"select samount, totalprice, "+pk+" , snum from cart where mnum = "+order.getMnum();
+				ps = con.prepareStatement(sql);
+				ps.executeUpdate();
+				// cart -> delete
+				sql = "delete from cart where mnum ="+order.getMnum();
+				ps = con.prepareStatement(sql);
+				ps.executeUpdate();
+				return true;
+			} // if end
+		}catch(Exception e) {System.out.println("주문하기오류"+e);}
+		
+		return false;
+	} // saveorder end
 	
 	
 } // class end

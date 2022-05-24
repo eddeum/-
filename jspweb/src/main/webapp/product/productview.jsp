@@ -98,7 +98,7 @@
 					 </div>
 					 <%
 					 		String mid = (String)session.getAttribute("login");
-					 		int mnum = MemberDao.getmemberDao().getmnum(mid);
+					 		mnum = MemberDao.getmemberDao().getmnum(mid);
 					 %>
 					 <div id="btnbox" class="btnbox">
 					 	<button id="btn1">바로 구매하기</button>

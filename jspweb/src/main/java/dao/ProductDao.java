@@ -299,6 +299,19 @@ public class ProductDao extends Dao {
 		}catch(Exception e) {System.out.println("장바구니삭제오류"+e);} 
 		return false;
 	} // 장바구니 삭제 end
+	
+	// 장바구니 상품개수 출력 메소드
+	public int getcartnum(int mnum) {
+		String sql = "select count(*) from cart where mnum= "+mnum;
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next() ) {
+				return rs.getInt(1);
+			} // if end
+		}catch(Exception e) {System.out.println("장바구니상품개수출력오류"+e);} 
+		return 0;
+	} // 장바구니 상품개수 end
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// 주문하기
@@ -334,6 +347,63 @@ public class ProductDao extends Dao {
 		
 		return false;
 	} // saveorder end
+	
+	// 주문내역 메소드
+	public JSONArray getorder(int mnum) {
+		String sql = "select a.ordernum as 주문번호, "
+				+ "		a.orderdate as 주문일, "
+				+ "        b.orderdetailnum as 주문상세번호 ,"
+				+ "        b.orderdetailactive as 상품상태, "
+				+ "        b.samount as 수량, "
+				+ "        c.snum as 재고번호, "
+				+ "        c.scolor as 색상, "
+				+ "		c.ssize as 사이즈, "
+				+ "        d.pnum as 제품번호, "
+				+ "        d.pname as 제품명, "
+				+ "        d.pimg as 제품사진 "
+				+ " from porder a join porderdetail b on a.ordernum = b.ordernum "
+				+ " join stock c on b.snum = c.snum "
+				+ " join product d on c.pnum = d.pnum where a.mnum = "+mnum+" order by a.ordernum asc";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			// json 사용하는 이유 -> js로 전송하기 위해
+			// arraylist 사용하는 이유 -> jsp 사용하려면
+			
+			JSONArray parentlist = new JSONArray(); 	// 상위 리스트[여러개의 하위 리스트]
+			JSONArray childlist = new JSONArray(); 		// 하위 리스트
+			int oldordernum = -1; 					// 이전 데이터의 주문번호 변수
+			while(rs.next() ) {
+				JSONObject jsonObject = new JSONObject();
+				jsonObject.put("ordernum", rs.getInt(1));
+				jsonObject.put("orderdate", rs.getString(2));
+				jsonObject.put("orderdetailnum", rs.getInt(3));
+				jsonObject.put("orderdetailactive", rs.getInt(4));
+				jsonObject.put("samount", rs.getInt(5));
+				jsonObject.put("snum", rs.getInt(6));
+				jsonObject.put("scolor", rs.getString(7));
+				jsonObject.put("ssize", rs.getString(8));
+				jsonObject.put("pnum", rs.getInt(9));
+				jsonObject.put("pname", rs.getString(10));
+				jsonObject.put("pimg", rs.getString(11));
+				
+				// 동일한 주문번호이면 동일한 리스트에 담기
+					// { 키 : 값 }
+					// {"ordernum" : [키 : 값, 키2 : 값2]}
+				if(oldordernum == rs.getInt(1)) { // 앞전 주문번호와 현재 주문번호 동일하면
+					childlist.put(jsonObject);
+				}else {
+					childlist = new JSONArray();	// 하위 리스트 초기화
+					childlist.put(jsonObject);		// 하쉬 리스트에 데이터 담기
+					parentlist.put(childlist);		// 상위 리스트에 하위 리스트 추가
+				} // else end
+				oldordernum = rs.getInt(1);	// 이전 주문번호 변수에 현재 주문번호 넣기
+			} // while end
+			return parentlist;
+		}catch(Exception e) {System.out.println("주문내역오류"+e);}
+		return null;
+	} // 주문내역 end
 	
 	
 } // class end

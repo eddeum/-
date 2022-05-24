@@ -55,7 +55,7 @@ function view(){
 '					<div class="col-sm-7 my-4"> <!-- 정보 -->'+
 '						<div class="row">'+
 '							<div class="pname">'+childlist[j]['pname']+'</div>'+
-'							<div class="poption">'+childlist[j]['scolor']+'/'+childlist[j]['ssize']+'/'+childlist[j]['pimg']+' '</div>'+
+'							<div class="poption">'+childlist[j]['scolor']+'/'+childlist[j]['ssize']+'/'+childlist[j]['pimg']+'</div>'+
 '							<div class="orderbuttonbox"> <!-- 버튼 -->'+
 '											<button onclick="">배송조회</button>'+
 '											<button onclick="">취소신청</button>'+

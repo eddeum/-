@@ -31,3 +31,11 @@
 	padding: 5px 30px;
 	border-radius: 20px;
 }
+.activetitle{
+	color: #999999;
+	border-bottom: 1px solid red;
+}
+.activecontent{
+	padding-top: 10px;
+	font-size: 20px;
+}

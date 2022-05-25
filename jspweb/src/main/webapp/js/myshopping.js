@@ -3,6 +3,11 @@ let parentlist;
 
 // 1. 무조건실행되는 메소드
 $(function(){
+	getorder();
+}); // 무조건실행되는 메소드
+
+// 2. 주문 목록 가져오기
+function getorder(){
 	$.ajax({
 		url : "/jspweb/product/getorder",
 		success : function(result){
@@ -11,12 +16,12 @@ $(function(){
 			view();
 		}  // success end
 	}); // ajax end
-}); // 무조건실행되는 메소드
+}
 
 let viewcount = 2; // 처음 주문개수를 출력하는 변수
 
-// 현재 브라우저내 스크롤 사용 이벤트 
-$(window).scroll(function(){
+// 3. 현재 브라우저내 스크롤 사용 이벤트 
+$(window).scroll( function(){ 
 	
 	// 만약에 스크롤이 바닥에 닿았을때
 	//	$(window).scroll : 브라우저(인터넷창) 스크롤
@@ -31,7 +36,7 @@ $(window).scroll(function(){
 	} // if end
 }); // 스크롤 end
 
-
+// 4. view
 function view(){
 	
 //	let html; // 초기값 안넣을떄[undefinde 문자가 들엉감]
@@ -47,6 +52,17 @@ function view(){
 '			<div class="orderdetailbox col-sm-10"> <!-- 주문상세 -->';
 		for(let j = 0; j<parentlist[i].length; j++){
 			let childlist = parentlist[i];	// 상위리스트에 하나씩 하위리스트 꺼내기
+			
+			// 상태 한글처리
+			let active;
+			if(childlist[j]['orderdetailactive'] == 0) active = "상품준비중";
+			else if(childlist[j]['orderdetailactive'] == 1) active = "배송중";
+			else if(childlist[j]['orderdetailactive'] == 2) active = "배송완료";
+			else if(childlist[j]['orderdetailactive'] == 3) active = "구매확정";
+			else if(childlist[j]['orderdetailactive'] == 4) active = "취소요청";
+			else if(childlist[j]['orderdetailactive'] == 5) active = "취소완료";
+			else{active = "재고확인중";}
+			
 			html +=
 				'<div class="row">'+
 '					<div class="col-sm-2"> <!-- 이미지 -->'+
@@ -58,13 +74,14 @@ function view(){
 '							<div class="poption">'+childlist[j]['scolor']+'/'+childlist[j]['ssize']+'/'+childlist[j]['pimg']+'</div>'+
 '							<div class="orderbuttonbox"> <!-- 버튼 -->'+
 '											<button onclick="">배송조회</button>'+
-'											<button onclick="">취소신청</button>'+
+'											<button onclick="cancelbtn('+childlist[j]['orderdetailnum']+')" data-bs-toggle="modal" data-bs-target="#cancelmodal">취소신청</button>'+
 '											<button onclick="">리뷰작성</button>'+
 '							</div>'+
 '						</div>'+
 '					</div>'+
-'					<div class="col-sm-3">'+
-'						<span> 상품 준비중</span>'+
+'					<div class="col-sm-3 py-5">'+
+'						<div class="activetitle"> 주문상태 </div>'+
+'						<div class="activecontent">'+active+'</div>'+
 '					</div>'+
 '				</div>'+
 '			</div>';
@@ -77,3 +94,29 @@ function view(){
 	$("#orderbox").html(html);
 	
 } // view end
+
+let orderdetailnum = -1;	// 선택한 버튼의 모달에 넣을 주문상세번호 변수
+
+function cancelbtn(num){orderdetailnum = num;}	// 선택한 버튼의 인수값을 변수에 대입 메소드
+
+// 5. 취소 모달에서 취소를 처리하는 메소드
+function cancel(){
+	alert("취소할 상품번호 :" + orderdetailnum);
+	
+	$.ajax({
+		url : "/jspweb/product/updateorderdetail",
+		data : {"orderdetailnum" : orderdetailnum, "active": 4},
+		success : function(result){
+			if(result == "1"){
+				alert("취소 요청 성공");
+				$("#modalclose").click(); // 특정 버튼의 강제 클릭이벤트
+				$("cancelconfirm").val(); // 사유 입력창 초기화
+				getorder();	
+			}else{
+				alert("취소 요청 실패");	
+			} // else end
+		} // success end
+	}); // ajax end
+	
+
+}

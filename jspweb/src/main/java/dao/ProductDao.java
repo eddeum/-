@@ -405,5 +405,59 @@ public class ProductDao extends Dao {
 		return null;
 	} // 주문내역 end
 	
+	// 주문취소 메소드
+	public boolean cancelorder(int orderdetailnum, int active) {
+		String sql = "update porderdetail set orderdetailactive = "+active+ " where orderdetailnum = "+orderdetailnum;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.executeUpdate();
+			return true;
+		}catch(Exception e) {System.out.println("주문취소오류"+e);}
+		return false;
+	} // 주문취소 end
+	
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// 매출차트 데이터호출
+	public JSONArray getchart(int type) {
+		
+		String sql = "";
+		JSONArray ja = new JSONArray();
+		
+		if(type == 1) { // 일별 매출
+			sql = "select "
+					+ "substring_index( orderdate, ' ', 1) as 날짜, "
+					+ "sum(ordertotalpay) from porder "
+					+ "group by 날짜 order by 날짜 desc";
+		}else if(type == 2) { // 카테고리별 전체 판매량
+			sql = "select"
+					+ "	sum(a.samount), "
+					+ "    d.cname "
+					+ "from porderdetail a, stock b, product c, category d where a.snum = b.snum and b.pnum = c.pnum and c.cnum = d.cnum "
+					+ "group by d.cname "
+					+ "order by orderdetailnum desc; ";
+		} // else if end
+	
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next() ) {
+				JSONObject jo = new JSONObject();
+				if(type == 1) {  // 일별 매출
+					jo.put("date", rs.getString(1) );
+					jo.put("value", rs.getInt(2) );
+					ja.put(jo);
+				}else if(type == 2) {  // 카테고리별 전체 판매량
+					jo.put("value", rs.getString(1) );
+					jo.put("category", rs.getString(2) );
+					ja.put(jo);
+				} // else if end
+			} // while end
+			
+			return ja;
+		}catch(Exception e) {System.out.println("매출데이터호출오류"+e);}
+		return null;
+	} // 매출차트 데이터호출 end
+	
+	// 
 	
 } // class end

@@ -18,7 +18,8 @@ function getorder(){
 	}); // ajax end
 }
 
-let viewcount = 2; // 처음 주문개수를 출력하는 변수
+let viewcount =2; // 처음 주문개수를 출력하는 변수
+
 
 // 3. 현재 브라우저내 스크롤 사용 이벤트 
 $(window).scroll( function(){ 
@@ -27,9 +28,9 @@ $(window).scroll( function(){
 	//	$(window).scroll : 브라우저(인터넷창) 스크롤
 	//  $(window).scrollTop() : 스크롤막다의 상단 위치
 	//	$(document).height() : 현재 보고 있는 문서 내 높이
-	// 	$(winow).height() : 현재 보고 있는 화면 높이
+	// 	$(window).height() : 현재 보고 있는 화면 높이
 		
-	if($(window).scrollTop() >= $(document).height() - $(window).height() ){
+	if( $(window).scrollTop()+30 >= $(document).height() - $(window).height()  ){
 		// 현재 스크롤의 상단위치 == 현재 보고 있는 문서내 높이 - 현재 보고 있는 화면높이
 		viewcount++; // 스크롤이 바닥에 닿을때마다 출력하는 주문개수를 증가
 		view();	// 새로고침
@@ -44,12 +45,12 @@ function view(){
 	for(let i = 0; i<parentlist.length; i++){
 		if(i == viewcount) break; // 만약에 i가 화면에 표시할 수 있는
 		html += 
-			 '<div class="orderinfo">'+
+			'<div class="orderinfo">'+
 '				<span>주문번호</span> <span>'+parentlist[i][0]['ordernum']+'</span>'+
 '				<span>주문날짜</span> <span>'+parentlist[i][0]['orderdate']+'</span>'+
 '				<a href="#"> <span>주문 상세보기 </span> </a>'+
 '			</div>'
-'			<div class="orderdetailbox col-sm-10"> <!-- 주문상세 -->';
+'			<div class="col-sm-10 mb-5"> <!-- 주문상세 -->';
 		for(let j = 0; j<parentlist[i].length; j++){
 			let childlist = parentlist[i];	// 상위리스트에 하나씩 하위리스트 꺼내기
 			
@@ -64,18 +65,18 @@ function view(){
 			else{active = "재고확인중";}
 			
 			html +=
-				'<div class="row">'+
+				'<div class="row orderdetailbox mx-3">'+
 '					<div class="col-sm-2"> <!-- 이미지 -->'+
 '						<img alt="" src="/jspweb/admin/productimg/'+childlist[j]['pimg']+'" width="100%">'+
 '					</div>'+
 '					<div class="col-sm-7 my-4"> <!-- 정보 -->'+
 '						<div class="row">'+
 '							<div class="pname">'+childlist[j]['pname']+'</div>'+
-'							<div class="poption">'+childlist[j]['scolor']+'/'+childlist[j]['ssize']+'/'+childlist[j]['pimg']+'</div>'+
+'							<div class="poption">'+childlist[j]['scolor']+'/'+childlist[j]['ssize']+' · '+childlist[j]["samount"]+'개</div>'+
 '							<div class="orderbuttonbox"> <!-- 버튼 -->'+
-'											<button onclick="">배송조회</button>'+
-'											<button onclick="cancelbtn('+childlist[j]['orderdetailnum']+')" data-bs-toggle="modal" data-bs-target="#cancelmodal">취소신청</button>'+
-'											<button onclick="">리뷰작성</button>'+
+'								<button onclick="">배송조회</button>'+
+'								<button onclick="cancelbtn('+childlist[j]['orderdetailnum']+')" data-bs-toggle="modal" data-bs-target="#cancelmodal">취소신청</button>'+
+'								<button onclick="">리뷰작성</button>'+
 '							</div>'+
 '						</div>'+
 '					</div>'+
@@ -83,13 +84,10 @@ function view(){
 '						<div class="activetitle"> 주문상태 </div>'+
 '						<div class="activecontent">'+active+'</div>'+
 '					</div>'+
-'				</div>'+
-'			</div>';
-					
+'				</div>';			
 		} // for end
-			html+=
-'					</div>'+
-'				</div>';
+		html+=
+'			</div>';
 	} // for end
 	$("#orderbox").html(html);
 	

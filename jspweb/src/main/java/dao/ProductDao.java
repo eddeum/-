@@ -11,6 +11,7 @@ import controller.admin.stockadd;
 import dto.Cart;
 import dto.Category;
 import dto.Order;
+import dto.Orderdetail;
 import dto.Product;
 import dto.Stock;
 
@@ -363,7 +364,7 @@ public class ProductDao extends Dao {
 				+ "        d.pimg as 제품사진 "
 				+ " from porder a join porderdetail b on a.ordernum = b.ordernum "
 				+ " join stock c on b.snum = c.snum "
-				+ " join product d on c.pnum = d.pnum where a.mnum = "+mnum+" order by a.ordernum asc";
+				+ " join product d on c.pnum = d.pnum where a.mnum = "+mnum+" order by a.ordernum desc";
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -418,7 +419,7 @@ public class ProductDao extends Dao {
 	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// 매출차트 데이터호출
-	public JSONArray getchart(int type) {
+	public JSONArray getchart(int type, int value) {
 		
 		String sql = "";
 		JSONArray ja = new JSONArray();
@@ -435,6 +436,15 @@ public class ProductDao extends Dao {
 					+ "from porderdetail a, stock b, product c, category d where a.snum = b.snum and b.pnum = c.pnum and c.cnum = d.cnum "
 					+ "group by d.cname "
 					+ "order by orderdetailnum desc; ";
+		}else if(type == 3) { // 재고번호 -> 제품별 판매량 추이
+			sql = "select "
+					+ "	substring_index(a.orderdate, ' ', 1)  as 날짜, "
+					+ " sum(b.samount) as 총판매수량 "
+					+ "	from porder a, porderdetail b, stock c "
+					+ " where a.ordernum = b.ordernum "
+					+ " and b.snum = c.snum "
+					+ " and c.pnum = (select pnum from stock where snum = "+value+") "
+					+ " group by 날짜 order by 날짜 desc";
 		} // else if end
 	
 		try {
@@ -442,12 +452,12 @@ public class ProductDao extends Dao {
 			rs = ps.executeQuery();
 			while(rs.next() ) {
 				JSONObject jo = new JSONObject();
-				if(type == 1) {  // 일별 매출
+				if(type == 1 || type == 3) {  // 일별 매출
 					jo.put("date", rs.getString(1) );
 					jo.put("value", rs.getInt(2) );
 					ja.put(jo);
 				}else if(type == 2) {  // 카테고리별 전체 판매량
-					jo.put("value", rs.getString(1) );
+					jo.put("value", rs.getInt(1) );
 					jo.put("category", rs.getString(2) );
 					ja.put(jo);
 				} // else if end
@@ -458,6 +468,30 @@ public class ProductDao extends Dao {
 		return null;
 	} // 매출차트 데이터호출 end
 	
-	// 
+	// 오늘 주문상세 호출
+	public ArrayList<Orderdetail> getorderdetail(){
+		ArrayList<Orderdetail> list = new ArrayList<Orderdetail>();
+		String sql = "select a.*, substring_index(b.orderdate, ' ', 1)as 날짜 "
+				+ "from porderdetail a, porder b "
+				+ "where a.ordernum = b.ordernum "
+				+ "and substring_index(b.orderdate, ' ', 1) = substring_index(now(), ' ', 1) "
+				+ "and a.orderdetailactive = 3";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next() ) {
+				Orderdetail orderdetail = new Orderdetail();
+				orderdetail.setOrderdetailnum(rs.getInt(1));
+				orderdetail.setOrderdetailactive(rs.getInt(2));
+				orderdetail.setSnum(rs.getInt(3));
+				orderdetail.setSamount(rs.getInt(4));
+				orderdetail.setTotalprice(rs.getInt(5));
+				orderdetail.setOrdernum(rs.getInt(6));
+				list.add(orderdetail);
+			} // while end
+			return list;
+		}catch(Exception e) {System.out.println("오늘주문상세호출오류"+e);}
+		return null;
+	} // 오늘주문 호출 end
 	
 } // class end

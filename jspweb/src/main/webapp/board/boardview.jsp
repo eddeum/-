@@ -136,7 +136,7 @@
 				<td width="80%">
 					<%=rereply.getRcontent() %><br>
 					<%if(mid != null && mid.equals(rereply.getMid()) ){ %>
-					<button class="btn replybtn" onclick="reupdateview(<%=reply.getRnum()%>)">수정</button>
+					<button class="btn replybtn" onclick="reupdateview(<%=rereply.getRnum()%>)">수정</button>
 					<button class="btn replybtn" onclick="replydelete(<%=rereply.getRnum()%>)">삭제</button>
 					<%} %>
 				</td>

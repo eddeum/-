@@ -241,7 +241,7 @@ public class BoardDao extends Dao {
 	
 	// 9. 댓글 수정 메소드[인수 : 수정할 댓글 번호]
 	public boolean replyupdate(int rnum, String rcontent) {
-		String sql = "update reply set rcontent = "+rcontent+" where rnum = "+rnum+" or rindex = "+rnum;
+		String sql = "update reply set rcontent = '"+rcontent+"'" +" where rnum = "+rnum;
 		try {
 			ps = con.prepareStatement(sql);
 

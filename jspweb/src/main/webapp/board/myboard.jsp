@@ -22,7 +22,7 @@
 		</tr>
 	<%
 		String mid = (String)session.getAttribute("login");
-		int mnum = MemberDao.getmemberDao().getmnum(mid);
+		mnum = MemberDao.getmemberDao().getmnum(mid);
 		ArrayList<Board> myboardlist = BoardDao.getBoardDao().getmyboard(mnum);
 		for(Board board : myboardlist){
 	%>

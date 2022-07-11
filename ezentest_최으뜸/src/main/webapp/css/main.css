@@ -1,0 +1,41 @@
+#footer {
+	background-color: gray;
+	height: 50px;
+	text-align: center;
+}
+
+#membertable {
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+#membertable th, td {
+	border: 1px solid black;
+}
+
+#votetable {
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+#votetable th, td {
+	border: 1px solid black;
+}
+
+#resulttable {
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+#resulttable th, td {
+	border: 1px solid black;
+}
